@@ -1,0 +1,74 @@
+﻿@model Sport.Domain.Entities.Food
+
+@{
+    ViewData["Title"] = "AddFood";
+}
+
+<h1>AddFood</h1>
+
+<h4>Food</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddFood">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProteinValue" class="control-label"></label>
+                <input asp-for="ProteinValue" class="form-control" />
+                <span asp-validation-for="ProteinValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarbohydrateValue" class="control-label"></label>
+                <input asp-for="CarbohydrateValue" class="form-control" />
+                <span asp-validation-for="CarbohydrateValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OilValue" class="control-label"></label>
+                <input asp-for="OilValue" class="form-control" />
+                <span asp-validation-for="OilValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FiberValue" class="control-label"></label>
+                <input asp-for="FiberValue" class="form-control" />
+                <span asp-validation-for="FiberValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodPhoto" class="control-label"></label>
+                <input asp-for="FoodPhoto" class="form-control" />
+                <span asp-validation-for="FoodPhoto" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="EnumFoodType" class="control-label"></label>
+                <select asp-for="EnumFookdType" class="form-control"></select>
+                <span asp-validation-for="EnumFoodType" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="EnumFoodType" class="control-label"></label>
+                <select asp-for="EnumFoodType" class="form-control" style="width:200px;">
+                    <option value="1">Hareketsiz </option>
+                    <option value="2">Hafif Egzersiz</option>
+                    <option value="3">Orta Egzersiz </option>
+                    <option value="4">Agır Egzersiz</option>
+                    <option value="5">Atlet </option>
+                </select>
+                <span asp-validation-for="EnumFoodType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
