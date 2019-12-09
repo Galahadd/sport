@@ -318,14 +318,8 @@ namespace Sport.Domain.Migrations
                     b.Property<string>("Password2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Size")
-                        .HasColumnType("float");
-
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Weight")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

@@ -17,11 +17,6 @@ namespace Sport.Domain.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         public string Password2 { get; set; }
-
-        public double Size { get; set; }
-
-        public double Weight { get; set; }
-
         public EnumGenderType EnumGenderType { get; set; }
 
         public virtual ICollection<UserNutritionLists> NutritionLists { get; set; }

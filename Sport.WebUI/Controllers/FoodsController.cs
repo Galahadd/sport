@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Sport.Domain;
+﻿using Microsoft.AspNetCore.Mvc;
 using Sport.Domain.Entities;
 using Sport.Service.Abstract;
+using System.Threading.Tasks;
 
 namespace Sport.WebUI.Controllers
 {
@@ -17,26 +11,60 @@ namespace Sport.WebUI.Controllers
 
         public FoodsController(IFoodService foodService)
         {
-           _foodService = foodService;
+            _foodService = foodService;
         }
 
-        // GET: Foods
         public async Task<IActionResult> Index()
         {
             return View(await _foodService.GetAllFoodAsync());
         }
 
-        public IActionResult AddFood()
+        public IActionResult Create()
         {
             return View(new Food());
         }
         [HttpPost]
-        public async Task<IActionResult> AddFood(Food food)
+        public async Task<IActionResult> Create(Food food)
         {
             int success = await _foodService.AddFoodAsync(food);
 
             return RedirectToAction("Index");
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> Edit(Food food)
+        //{
+        //    int success = await _foodService.EditFoodAsync(food);
+
+        //    return RedirectToAction("Index");
+        //}
+
+        public async Task<IActionResult> Delete(Food food)
+        {
+            int succes = await _foodService.DeleteFoodAsync(food);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Edit(Food food, int Id)
+        {
+            food = _foodService.FoodById(Id);
+            return View(food);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Food food)
+        {
+            int succes= await _foodService.EditFoodAsync(food);
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult Details(Food food, int Id)
+        {
+            food = _foodService.FoodById(Id);
+            return View(food);
+        }
+
+
 
 
         #region AllClosed

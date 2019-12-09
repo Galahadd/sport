@@ -9,7 +9,9 @@ namespace Sport.Repository.Abstract
 {
     public interface IGenericRepository<T> where T:class
     {
-        Task<T> Get(int id);
+        // Task<T> Get(int id);
+
+        T Get(Expression<Func<T, bool>> filter = null);
         Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate);
         Task<int> Add(T entity);

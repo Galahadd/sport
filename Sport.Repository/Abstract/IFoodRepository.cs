@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Sport.Repository.Abstract
 {
-    public interface IFoodRepository:IGenericRepository<Food>
+    public interface IFoodRepository : IGenericRepository<Food>
     {
+       
     }
 }

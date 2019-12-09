@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Sport.Domain.Entities;
 using Sport.Repository.Abstract;
 using Sport.Service.Abstract;
+using Sport.WebUI.Entities;
 using Sport.WebUI.Models;
 
 namespace Sport.WebUI.Controllers
@@ -38,18 +39,43 @@ namespace Sport.WebUI.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        /*public IActionResult AddFood()
+        public ActionResult Calculator()
         {
-            return View(new Food());
-        }
-        [HttpPost]
-        public async Task<IActionResult> AddFood(Food entity)
-        {
-            //await _dataContext.Foods.AddAsync(entity);
-            await _foodService.Add(entity);
-            int success = await _foodService.SaveChangesAsync();
+            var calorieCalculatorViewModel = new CalorieCalculatorViewModel
+            {
+                calorieCalculator = new CalorieCalculator(),
+            };
 
-            return View(new Food());
-        }*/
+            return View(calorieCalculatorViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Calculator(CalorieCalculator calorieCalculator, ViewInfo viewInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                CalorieCalculation hsb = new CalorieCalculation();
+                ViewInfo results = hsb.Calculator(calorieCalculator, viewInfo);
+
+                return RedirectToAction("ViewInfo", results);
+            }
+
+            return View();
+        }
+
+        public ActionResult ViewInfo(ViewInfo viewInfo)
+        {
+            var x = viewInfo;
+            return View(x);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
     }
 }
