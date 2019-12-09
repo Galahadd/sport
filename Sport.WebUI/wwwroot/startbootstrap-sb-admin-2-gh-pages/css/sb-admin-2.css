@@ -6523,7 +6523,9 @@ button.bg-dark:focus {
   .d-lg-inline-block {
     display: inline-block !important;
   }
-
+  .d-lg-block {
+    display: block !important;
+  }
   .d-lg-table {
     display: table !important;
   }
@@ -10582,17 +10584,15 @@ a:focus {
 }
 
 .bg-login-image {
-    background: background: url('../img/Healthy Food Clipart AZPng.com 12801.png');
-    background-image: url('../img/healthy food clipart azpng.com 12801.png');
-    background-position: center;
-    background-size: cover;
+  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background-position: center;
+  background-size: cover;
 }
 
 .bg-register-image {
-    background: background: url('../img/Healthy Food Clipart AZPng.com 12801.png');
-    background-image: url('../img/healthy food clipart azpng.com 12801.png');
-    background-position: center;
-    background-size: cover;
+  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+  background-position: center;
+  background-size: cover;
 }
 
 .bg-password-image {

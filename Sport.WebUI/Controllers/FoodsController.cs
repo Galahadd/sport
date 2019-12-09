@@ -44,9 +44,9 @@ namespace Sport.WebUI.Controllers
             int succes = await _foodService.DeleteFoodAsync(food);
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> Edit(Food food, int Id)
+        public  IActionResult Edit(Food food, int Id)
         {
-            food = _foodService.FoodById(Id);
+            food =  _foodService.FoodById(Id);
             return View(food);
         }
 
