@@ -1,128 +1,50 @@
 ﻿@model Sport.WebUI.Models.CalorieCalculatorViewModel
 @{
-    Layout = "~/Views/_Layout2.cshtml";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+        ViewData["Title"] = "Hesaplama";
 }
-
-
-
-
-@*<div id="secured-message" class="container hidden-xs"><small class="text-muted"> <span class="glyphicon glyphicon-lock" style="color:#4D9A26;"></span> this website is secured by 256-bit encryption</small></div>*@
-
-<div class="container">
-
-    <div class="jumbotron">
-
-        <h2 class="nice-headline">Her gün kaç kalori yaktığınızı öğrenin</h2>
-        <p class="intro text-center">Günde kaç kalori yaktığınızı ölçen Toplam Günlük Enerji Harcama miktarınızı öğrenmek için TDEE hesaplayıcısını kullanın.</p>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a class="text-muted" href="#metric" aria-controls="metric" role="tab" data-toggle="tab">Ölçüleriniz</a></li>
-        </ul>
-
-        <div class="row">
-            <div class="col-sm-6 tab-content">
-                <div role="tabpanel" class="tab-pane active">
-                    <div id="form-metric">
-                        <form asp-controller="Home" asp-action="Calculator" method="post">
-                            <table>
-                                <tr>
-                                    <td class="col1">Cinsiyet</td>
-                                    <td>
-                                        @*<label><input type="radio" name="gender" id="male-metric" value="male" checked>  Erkek &nbsp;</label>
-                                            <label><input type="radio" name="gender" id="female-metric" value="female">  Kadın</label>*@
-                                        <select asp-for="calorieCalculator.CalorieCalculatorGender" class="form-control" style="width:200px;">
-                                            <option value="0">Erkek </option>
-                                            <option value="1">Kadın</option>
-                                        </select>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    @*<br />*@
-                                    <td class="col1"><label for="age">Yaş</label></td>
-                                    <td>
-                                        @*<input type="text" name="age" class="form-control" id="age-metric" style="width:60px;" maxlength="3" value="">*@
-                                        <input asp-for="calorieCalculator.CalorieCalculatorAge" type="text" class="form-control" style="width:60px;" maxlength="3" placeholder="yaş" value="">
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="col1"><label for="weight">Kilo</label></td>
-                                    <td>  <input asp-for="calorieCalculator.CalorieCalculatorWeight" type="text" class="form-control" style="width:60px;" maxlength="5" placeholder="kg" value=""> </td>
-                                    @*<td><input type="text" name="weight" class="form-control" id="weight-metric" placeholder="kg" style="width:60px;" maxlength="5"></td>*@
-                                </tr>
-
-                                <tr>
-                                    <td class="col1"><label for="weight">Boy</label></td>
-                                    <td>  <input asp-for="calorieCalculator.CalorieCalculatorHeight" type="text" class="form-control" style="width:60px;" maxlength="5" placeholder="cm" value=""> </td>
-                                    @*<td><input type="text" name="weight" class="form-control" id="weight-metric" placeholder="kg" style="width:60px;" maxlength="5"></td>*@
-                                </tr>
-
-                                <tr>
-                                    <td class="col1">Aktivite</td>
-                                    <td>
-                                        <select asp-for="calorieCalculator.CalorieCalculatorActivity" class="form-control" style="width:200px;">
-                                            <option value="0">Hareketsiz </option>
-                                            <option value="1">Hafif Egzersiz</option>
-                                            <option value="2">Orta Egzersiz </option>
-                                            <option value="3">Agır Egzersiz</option>
-                                            <option value="4">Atlet </option>
-                                        </select>
-
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td style="position:relative;" class="col1">
-                                        <label for="bodyfat">Yağ Oranı</label>
-                                    </td>
-                                    <td id="bfmetric">
-                                        <input asp-for="calorieCalculator.CalorieCalculatorBodyFat" type="text" class="form-control" style="width:46px;display:inline-block;" placeholder="%" maxlength="2" value="">
-                                    </td>
-                                </tr>
-
-
-                                <tr style="margin-top:15px;">
-                                    <td class="col1">&nbsp;</td>
-                                    <td>  <button type="submit" class="btn btn-submit btn-lg" name="submit">Kalori Hesapla</button> </td>
-                                    @*<td><input type="submit" class="btn btn-submit btn-lg" id="submit-metric" name="submit" value="Hesapla!"></td>*@
-                                </tr>
-                            </table>
-                        </form>
-                    </div> <!-- end #form -->
+@section NormalLayout{
+    <div class="style-banner mx-auto">
+        <h3 class="text-wh font-weight-bold">Daha <span>Fit</span> bir görünüme sahip olmak için</h3>
+        <p class="mt-2 text-li" id="find">Aşağıdan hesaplamalarınızı yapabilirsiniz.</p>
+        <!-- form -->
+        <div class="home-form-w3ls mt-5 pt-lg-4">
+            <form asp-controller="Home" asp-action="Calculator" method="post">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <select asp-for="calorieCalculator.CalorieCalculatorGender" class="form-control">
+                                <option value="0">Erkek</option>
+                                <option value="1">Kadın</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="calorieCalculator.CalorieCalculatorAge" type="text" class="form-control" maxlength="3" placeholder="Yaşınız" value="">
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="calorieCalculator.CalorieCalculatorWeight" type="text" class="form-control" maxlength="5" placeholder="Kilonuz" value="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input asp-for="calorieCalculator.CalorieCalculatorHeight" type="text" class="form-control" maxlength="5" placeholder="Boyunuz" value="">
+                        </div>
+                        <div class="form-group">
+                            <select asp-for="calorieCalculator.CalorieCalculatorActivity" class="form-control">
+                                <option value="0">Haraketsiz</option>
+                                <option value="1">Hafif Egzersiz</option>
+                                <option value="2">Orta Egzersiz</option>
+                                <option value="3">Ağır Agzersiz</option>
+                                <option value="4">Atlet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="calorieCalculator.CalorieCalculatorBodyFat" type="text" class="form-control" placeholder="Yağ Oranınız" maxlength="4" value="">
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-sm-6">
-                <div style="float:right;margin-right:12px;">
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- desktop_homepage_INTL_300x250 -->
-                    <ins class="adsbygoogle"
-                         style="display:inline-block;width:300px;height:250px"
-                         data-ad-client="ca-pub-3803014745010322"
-                         data-ad-slot="3573961869"></ins>
-                    <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-
-            </div>
-        </div> <!-- end row -->
-
-
-        <hr>
-        <p class="text-center"><small>Sorularınız için bize e posta göndermeyi unutmayın.E-mail:test@test.com<br></small></p>
-
-
-    </div> <!-- end .jumbotron -->
-
-    <h3 class="nice-font">Kalori Miktaır Nasıl Hesaplanır?</h3>
-
-    <img src="https://tdeecalculator.net/assets/images/tdee-pie-chart.png" alt="TDEE Pie Chart" class="pull-right" width="300">
-
-    <p>Toplam Günlük Enerji Harcama, egzersiz göz önüne alındığında günde kaç kalori yaktığınızın bir tahmnidir.İlk önce Bazal Metabolizma Hızını hesaplar ve ardından bu değeri bir aktivite çarpanı ile çarparak kalori miktarınızı hesaplar.</p>
-
-    <p><abbr title="Basal Metabolic Rate">BMR </abbr>Hesaplayıcımız en iyi formülleri kullanır ve puanınızı okuması kolay ve anlamlı şekilde görüntüler.</p>
-
-
-</div> <!-- end .container -->
+                <button type="submit" class="btn btn-submit btn-lg" name="submit">Kalori Hesapla</button>
+            </form>
+        </div>
+    </div>
+}

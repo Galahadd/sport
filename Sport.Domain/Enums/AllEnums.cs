@@ -9,79 +9,79 @@ namespace Sport.Domain.Enums
     {
         public enum EnumSportType
         {
-            [Display(Name = "Weakening")]
+            [Display(Name = "Zayıflama")]
             Weakening = 0,
-            [Display(Name = "Protection")]
+            [Display(Name = "Koruma")]
             Protection = 1,
-            [Display(Name = "Development")]
+            [Display(Name = "Gelişme")]
             Development = 2
         }
         public enum EnumFoodType
         {
-            [Display(Name = "Red Meat")]
+            [Display(Name = "Kırmızı Et")]
             RedMeat = 0,
-            [Display(Name = "White Meat")]
+            [Display(Name = "Beyaz Et")]
             WhiteMeat = 1,
-            [Display(Name = "Fruit")]
+            [Display(Name = "Meyve")]
             Fruit = 2,
-            [Display(Name = "Vegetables")]
+            [Display(Name = "Sebze")]
             Vegetables = 3,
-            [Display(Name = "Legumes")]
+            [Display(Name = "Bakliyat")]
             Legumes = 4,
-            [Display(Name = "Nuts")]
+            [Display(Name = "Çerez")]
             Nuts = 5,
-            [Display(Name = "Liquid")]
+            [Display(Name = "Sıvı")]
             Liquid = 6
         }
         public enum EnumNutritionType
         {
-            [Display(Name = "White Meat")]
+            [Display(Name = "Kırmızı Et")]
             WhiteMeat = 0,
-            [Display(Name = "Red Meat")]
+            [Display(Name = "Beyaz Et")]
             RedMeat = 1,
-            [Display(Name = "Vegetarian")]
+            [Display(Name = "Vejeteryan")]
             Vegetarian = 2
         }
         public enum EnumNutritionKind
         {
-            [Display(Name = "Diet")]
+            [Display(Name = "Diyet")]
             Diet = 0,
-            [Display(Name = "Protection")]
+            [Display(Name = "Koruma")]
             Protection = 1,
-            [Display(Name = "Development")]
+            [Display(Name = "Gelişme")]
             Development = 2
         }
         public enum EnumGenderType
         {
-            [Display(Name = "Male")]
+            [Display(Name = "Erkek")]
             Male = 0,
-            [Display(Name = "Female")]
+            [Display(Name = "Kadın")]
             Female = 1
         }
         public enum EnumActivityType
         {
-            [Display(Name = "Office Worker")]
+            [Display(Name = "Ofis Çalışması")]
             OfficeWorker = 0,
-            [Display(Name = "Light Exercise")]
+            [Display(Name = "Hafif Egzersiz")]
             LightExercise = 1,
-            [Display(Name = "Medium Exercise")]
+            [Display(Name = "Orta Egzersiz")]
             MediumExercise = 2,
-            [Display(Name = "Heavy Exercise")]
+            [Display(Name = "Ağır Egzersiz")]
             HeavyExercise = 3,
-            [Display(Name = "Athlete")]
+            [Display(Name = "Atlet")]
             Athlete = 4
         }
         public enum EnumMealType
         {
-            [Display(Name = "Morning")]
+            [Display(Name = "Sabah")]
             Morning = 0,
-            [Display(Name = "Snacks1")]
+            [Display(Name = "Ara Öğun1")]
             Snacks1 = 1,
-            [Display(Name = "Noon")]
+            [Display(Name = "Öğle")]
             Noon = 2,
-            [Display(Name = "Snacks2")]
+            [Display(Name = "Ara Öğün2")]
             Snacks2 = 3,
-            [Display(Name = "Evening")]
+            [Display(Name = "Akşam")]
             Evening = 4
         }
     }

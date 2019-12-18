@@ -11,7 +11,7 @@ namespace Sport.Repository.Abstract
     {
         // Task<T> Get(int id);
 
-        T Get(Expression<Func<T, bool>> filter = null);
+        Task<T> Get(Expression<Func<T, bool>> filter = null);
         Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate);
         Task<int> Add(T entity);

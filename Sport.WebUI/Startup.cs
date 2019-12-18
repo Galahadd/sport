@@ -64,7 +64,7 @@ namespace Sport.WebUI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Calculator}/{id?}");
             });
         }
     }

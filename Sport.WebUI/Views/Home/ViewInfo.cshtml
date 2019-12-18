@@ -1,10 +1,24 @@
 ﻿@model Sport.WebUI.Entities.ViewInfo
 @{
-    Layout = "~/Views/_Layout2.cshtml";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    ViewData["Title"] = "Bilgileriniz";
 }
 
+@section Classlar{
 
+    <link rel="canonical" href="https://tdeecalculator.net/result.php?s=metric&g=male&age=23&kg=78.9&cm=170&act=1.55&bf=19&f=1">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="https://tdeecalculator.net/assets/css/bootstrap-full.css?1501042105">
+    <link rel="stylesheet" type="text/css" href="https://tdeecalculator.net/assets/css/style.css?1501042095">
+    <style>
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    </style>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
+}
 <div id="secured-message" class="container hidden-xs"><small class="text-muted"> <span class="glyphicon glyphicon-lock" style="color:#4D9A26;"></span></small></div>
 <div class="container">
     <div class="result">
@@ -44,8 +58,6 @@
                 </div>
             </div>
 
-
-
             <div class="col-sm-8" style="padding-right:0;">
 
                 <p>İstatiklerinize dayanarak,bakım kalorileriniz için en iyi tahmin Katch-McArdle formülüne sağlanmıştır.Aşağıdaki tablo,farklı bir aktivite seviyesi seçmiş olmanız durumunda farklı gösterir.</p>
@@ -53,33 +65,33 @@
                 <table class="table table-condensed" id="bmr-table" style="margin-bottom:10px;">
                     <tbody>
                         <tr>
-                            <td>Bazal Metabolizma </td>
-                            <td>Günlük <small>@Model.BasalMetabolic kalori</small></td>
+                            <td><big>Bazal Metabolizma </big></td>
+                            <td>Günlük <big>@Model.BasalMetabolic kalori</big></td>
                         </tr>
 
                         <tr>
-                            <td>Hareketsiz</td>
-                            <td>Günlük <small>@Model.Sedentary kalori</small></td>
+                            <td><big>Hareketsiz</big></td>
+                            <td><big>Günlük @Model.Sedentary kalori</></big></td>
                         </tr>
                         <tr>
-                            <td>Hafif Egzersiz</td>
-                            <td>Günlük <small>@Model.LightExercise kalori</small></td>
+                            <td><big>Hafif Egzersiz</big></td>
+                            <td><big>Günlük @Model.LightExercise kalori</big></td>
                         </tr>
 
                         <tr>
-                            <td><b>Orta Egzersiz</b></td>
-                            <td><b>Günlük @Model.ModerateExercise kalori</b></td>
+                            <td><big>Orta Egzersiz</big></td>
+                            <td><big>Günlük @Model.ModerateExercise kalori</big></td>
                         </tr>
 
                         <tr>
                             @*<tr class="success2">*@
-                            <td>Ağır Egzersiz</td>
-                            <td>Günlük <small>@Model.HeavyExercise kalori</small></td>
+                            <td><big>Ağır Egzersiz</big></td>
+                            <td><big>Günlük @Model.HeavyExercise kalori</big></td>
                         </tr>
 
                         <tr>
-                            <td>Atlet</td>
-                            <td>Günlük <small>@Model.Athlete kalori</small></td>
+                            <td><big>Atlet</big></td>
+                            <td><big>Günlük @Model.Athlete kalori</big></td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,29 +103,29 @@
 
             <div class="col-sm-6" style="padding-left:0;">
 
-                <h2>İdeal Ağırlığınız:@Model.min- @Model.max </h2>
+                <h2><big>İdeal Ağırlığınız:@Model.min- @Model.max </big></h2>
 
                 <p>İdeal vücüt ağırlığınız,aşağıda listenen çeşitli formüllere göre tahmin edilmektedir.Bu formüller boyunuza dayanır ve ortalamaları temsil eder.Bu nedenle ağırlık çalışması formülleri çok ciddiye almayın.</p>
 
                 <table class="table table-condensed mb0">
                     <tr>
-                        <td>G.J. Hamwi Formula (1964)</td>
-                        <td>@Model.FHamwi</td>
+                        <td><big>G.J. Hamwi Formula (1964)</big></td>
+                        <td><big>@Model.FHamwi</big></td>
                     </tr>
 
                     <tr>
-                        <td>B.J. Devine Formula (1974)</td>
-                        <td>@Model.FDevine</td>
+                        <td><big>B.J. Devine Formula (1974)</big></td>
+                        <td><big>@Model.FDevine</big></td>
                     </tr>
 
                     <tr>
-                        <td>J.D. Robinson Formula (1983)</td>
-                        <td>@Model.FRobinson</td>
+                        <td><big>J.D. Robinson Formula (1983)</big></td>
+                        <td><big>@Model.FRobinson</big></td>
                     </tr>
 
                     <tr>
-                        <td>D.R. Miller Formula (1983)</td>
-                        <td>@Model.FMiller</td>
+                        <td><big>D.R. Miller Formula (1983)</big></td>
+                        <td><big>@Model.FMiller</big></td>
                     </tr>
                 </table>
             </div> <!-- end col-sm-6 -->
@@ -121,7 +133,7 @@
 
             <div class="col-sm-6 " style="padding-right:0;">
 
-                <h2>BMI Puanı @Model.BMI</h2>
+                <h2><big>BMI Puanı @Model.BMI</big></h2>
 
                 <p></p>
 
@@ -133,13 +145,13 @@
                         <tr>
                             @{ if (Model.BMI < 18.5)
                                 {
-                                    <td><b>18.5 veya aşağısı</b></td>
-                                    <td><b>Zayıf</b></td>
+                                    <td><b><big>18.5 veya aşağısı</big></b></td>
+                                    <td><b><big>Zayıf</big></b></td>
                                 }
                                 else
                                 {
-                                    <td>18.5 veya aşağısı</td>
-                                    <td>Zayıf</td>
+                                    <td><big>18.5 veya aşağısı</big></td>
+                                    <td><big>Zayıf</big></td>
 
                                 }
                             }
@@ -147,13 +159,13 @@
                         <tr>
                             @{ if (Model.BMI > 18.5 && Model.BMI < 25)
                                 {
-                                    <td><b>18-25 Arası</b></td>
-                                    <td><b>Normal</b></td>
+                                    <td><b><big>18-25 Arası</big></b></td>
+                                    <td><b><big>Normal</big></b></td>
                                 }
                                 else
                                 {
-                                    <td>18-25 Arası</td>
-                                    <td>Normal</td>
+                                    <td><big>18-25 Arası</big></td>
+                                    <td><big>Normal</big></td>
 
                                 }
                             }
@@ -162,13 +174,13 @@
                         <tr>
                             @{ if (Model.BMI > 25 && Model.BMI < 29.99)
                                 {
-                                    <td><b>25-29.99 Arası</b></td>
-                                    <td><b>Kilolu</b></td>
+                                    <td><b><big>25-29.99 Arası</big></b></td>
+                                    <td><b><big>Kilolu</big></b></td>
                                 }
                                 else
                                 {
-                                    <td>25-29.99 Arası</td>
-                                    <td>Kilolu</td>
+                                    <td><big>25-29.99 Arası</big></td>
+                                    <td><big>Kilolu</big></td>
 
                                 }
                             }
@@ -176,13 +188,13 @@
                         <tr>
                             @{ if (Model.BMI > 30)
                                 {
-                                    <td><b>30+</b></td>
-                                    <td><b>Şişman</b></td>
+                                    <td><b><big>30+</big></b></td>
+                                    <td><b><big>Şişman</big></b></td>
                                 }
                                 else
                                 {
-                                    <td>30+</td>
-                                    <td>Şişman</td>
+                                    <td><big>30+</big></td>
+                                    <td><big>Şişman</big></td>
 
                                 }
                             }
@@ -449,5 +461,28 @@
 
 
 
+        @section Siktipt{
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <script src="https://tdeecalculator.net/assets/js/site.js"></script>
+            <script src="//static.getclicky.com/js" type="text/javascript"></script>
+            <script type="text/javascript">try { clicky.init(100814305); } catch (e) { }</script>
+            <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100814305ns.gif" /></p></noscript>
+
+            @*<script>
+                    $('#macrotabs a').click(function (e) {
+                        e.preventDefault();
+                        $(this).tab('show');
+                    });
+
+                    $("#clickplus").click(function () {
+                        $("#linkreveal").slideDown("slow", function () {
+                            // Animation complete.
+                        });
+                    });
+                </script>*@
+        }
 
 

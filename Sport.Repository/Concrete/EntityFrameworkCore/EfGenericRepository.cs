@@ -21,17 +21,18 @@ namespace Sport.Repository.Concrete
 
         //------------------------------------------------------------------
 
+        //public async Task<T> Get(int id)
+        //{
+        //    return await _context.Set<T>().FindAsync(id);
+
+        //}
+
         public async Task<int> Add(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
             return await Save();
         }
 
-        //public async Task<int> Delete(T entity)
-        //{
-        //    _context.Set<T>().Remove(entity);
-        //    return await Save();
-        //}
         public async Task<int> Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
@@ -48,16 +49,11 @@ namespace Sport.Repository.Concrete
         {
             return await _context.Set<T>().Where(predicate).ToListAsync();
         }
-        //public async Task<T> Get(int id)
-        //{
-        //    return await _context.Set<T>().FindAsync(id);
-
-        //}
-
-        public T Get(Expression<Func<T, bool>> filter)
+   
+        public async Task<T> Get(Expression<Func<T, bool>> filter)
         {
             // return context.Set<TEntity>().SingleOrDefault(filter);
-            return  _context.Set<T>().SingleOrDefault(filter);
+            return await _context.Set<T>().Where(filter).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<T>> GetAll()

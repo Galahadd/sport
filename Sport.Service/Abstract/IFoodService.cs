@@ -18,7 +18,7 @@ namespace Sport.Service.Abstract
 
         Task<int> DeleteFoodAsync(Food food);
 
-        Food FoodById(int Id);
+        Task<Food> FoodById(int Id);
 
     }
 }

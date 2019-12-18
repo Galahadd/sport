@@ -35,9 +35,10 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
             return await _foodRepo.Edit(food);
         }
 
-        public Food FoodById(int Id)
+        public async Task<Food> FoodById(int Id)
         {
-            return _foodRepo.Get(p => p.Id == Id);
+            Food getFood = await _foodRepo.Get(p => p.Id == Id);
+            return getFood;
         }
 
         public async Task<IEnumerable<Food>> GetAllFoodAsync()

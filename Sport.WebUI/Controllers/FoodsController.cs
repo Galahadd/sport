@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sport.Domain.Entities;
 using Sport.Service.Abstract;
+using System;
 using System.Threading.Tasks;
 
 namespace Sport.WebUI.Controllers
@@ -28,43 +29,46 @@ namespace Sport.WebUI.Controllers
         {
             int success = await _foodService.AddFoodAsync(food);
 
+            if(success<0)
+            {
+                return NotFound();
+            }
+
             return RedirectToAction("Index");
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(Food food)
-        //{
-        //    int success = await _foodService.EditFoodAsync(food);
-
-        //    return RedirectToAction("Index");
-        //}
 
         public async Task<IActionResult> Delete(Food food)
         {
-            int succes = await _foodService.DeleteFoodAsync(food);
+            int success = await _foodService.DeleteFoodAsync(food);
+            if(success < 0)
+            {
+                return NotFound();
+            }
             return RedirectToAction("Index");
         }
-        public  IActionResult Edit(Food food, int Id)
+        public async Task<IActionResult> Edit(int Id)
         {
-            food =  _foodService.FoodById(Id);
+            Food food = await _foodService.FoodById(Id);
             return View(food);
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(Food food)
         {
-            int succes= await _foodService.EditFoodAsync(food);
+            int success= await _foodService.EditFoodAsync(food);
+            if (success < 0)
+            {
+                return NotFound();
+            }
             return RedirectToAction("Index");
         }
 
 
-        public IActionResult Details(Food food, int Id)
+        public async Task<IActionResult> Details(int Id)
         {
-            food = _foodService.FoodById(Id);
+            Food food = await _foodService.FoodById(Id);
             return View(food);
         }
-
-
 
 
         #region AllClosed

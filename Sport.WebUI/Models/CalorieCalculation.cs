@@ -176,9 +176,9 @@ namespace Sport.WebUI.Models
                 viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 35);
                 viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 35);
 
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 40);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 40);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 20);
+                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting / 40);
+                viewInfo.cuttingLowerFats = Math.Ceiling(cutting / 40);
+                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting / 20);
 
                 viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting / 30);
                 viewInfo.bulkingLowerFats = Math.Ceiling(cutting / 20);
@@ -217,9 +217,9 @@ namespace Sport.WebUI.Models
                 viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 35);
                 viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 35);
 
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 40);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 40);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 20);
+                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting / 40);
+                viewInfo.cuttingLowerFats = Math.Ceiling(cutting / 40);
+                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting / 20);
 
                 viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting / 30);
                 viewInfo.bulkingLowerFats = Math.Ceiling(cutting / 20);
@@ -258,9 +258,9 @@ namespace Sport.WebUI.Models
                 viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 35);
                 viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 35);
 
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 40);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 40);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 20);
+                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting / 40);
+                viewInfo.cuttingLowerFats = Math.Ceiling(cutting / 40);
+                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting / 20);
 
                 viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting / 30);
                 viewInfo.bulkingLowerFats = Math.Ceiling(cutting / 20);
