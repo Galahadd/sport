@@ -78,5 +78,13 @@ namespace Sport.Repository.Concrete
            int success = await _context.SaveChangesAsync();
             return success;
         }
+
+        public async Task<T> AddEntityAndGetId(T entity)
+        {
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            return entity;
+        }
     }
 }

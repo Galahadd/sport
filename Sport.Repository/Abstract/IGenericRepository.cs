@@ -19,5 +19,8 @@ namespace Sport.Repository.Abstract
         Task<int> Delete(T entity);
         Task<IQueryable<T>> Include(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
         Task<int> Save();
+        Task<T> AddEntityAndGetId(T entity);
+
+
     }
 }

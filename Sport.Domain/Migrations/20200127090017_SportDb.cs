@@ -27,6 +27,22 @@ namespace Sport.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Movements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MovementName = table.Column<string>(nullable: true),
+                    MovementPhoto = table.Column<string>(nullable: true),
+                    MovementDescription = table.Column<string>(nullable: true),
+                    EnumMovementType = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Movements", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "NutritionLists",
                 columns: table => new
                 {
@@ -235,28 +251,6 @@ namespace Sport.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movements",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MovementName = table.Column<string>(nullable: true),
-                    MovementPhoto = table.Column<string>(nullable: true),
-                    MovementDescription = table.Column<string>(nullable: true),
-                    FKAreaId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Movements", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Movements_Areas_FKAreaId",
-                        column: x => x.FKAreaId,
-                        principalTable: "Areas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AreaMovements",
                 columns: table => new
                 {
@@ -306,11 +300,6 @@ namespace Sport.Domain.Migrations
                 name: "IX_MealFoods_FKThatDayId",
                 table: "MealFoods",
                 column: "FKThatDayId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Movements_FKAreaId",
-                table: "Movements",
-                column: "FKAreaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NutritionDays_FKNutritionListId",
@@ -363,6 +352,9 @@ namespace Sport.Domain.Migrations
                 name: "UserSportLists");
 
             migrationBuilder.DropTable(
+                name: "Areas");
+
+            migrationBuilder.DropTable(
                 name: "Movements");
 
             migrationBuilder.DropTable(
@@ -375,19 +367,16 @@ namespace Sport.Domain.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Areas");
+                name: "SportDays");
 
             migrationBuilder.DropTable(
                 name: "NutritionDays");
 
             migrationBuilder.DropTable(
-                name: "SportDays");
+                name: "SportLists");
 
             migrationBuilder.DropTable(
                 name: "NutritionLists");
-
-            migrationBuilder.DropTable(
-                name: "SportLists");
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Sport.Domain.Entities.Food>
+﻿@model IEnumerable<Sport.Domain.Entities.Movement>
 
 @{
     Layout = "~/Views/Shared/_Layout1.cshtml";
-    ViewData["Title"] = "Besinler";
+    ViewData["Title"] = "Hareketler";
 }
 
 @section Classlar{
@@ -14,79 +14,52 @@
     <link href="~/startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="~/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> }
 
-
-
-<h4>Kayıtlı Besinleriniz</h4>
-
+<h4>Kayıtlı Hareketleriniz</h4>
 <p>
-    <a asp-controller="Foods" asp-action="Create">Besin Ekle</a>
+    <a asp-controller="Movements" asp-action="Create">Hareket Ekle</a>
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3" style="background-color:darkgrey">
-        <h6 class="m-0 font-weight-bold text-primary" style="color:coral">Besin Listesi</h6>
+        <h6 class="m-0 font-weight-bold text-primary" style="color:coral">Hareket Listesi</h6>
     </div>
     <div class="card-body" style="background-color:white">
         <div class="table-responsive">
-            <table class="table table-bordered" id="besinTablosu" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="hareketTablosu" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>
                             <label>İsim</label>
                         </th>
                         <th>
-                            <label>Kalori Değeri</label>
-                        </th>
-                        <th>
-                            <label>Protein Değeri</label>
-                        </th>
-                        <th>
-                            <label>Karbonhidrat Değeri</label>
-                        </th>
-                        <th>
-                            <label>Yağ Değeri</label>
-                        </th>
-                        <th>
-                            <label>Lif Değeri</label>
-                        </th>
-                        <th>
                             <label>Fotoğraf</label>
                         </th>
                         <th>
-                            <label>Besin Tipi</label>
+                            <label>Açıklama</label>
                         </th>
-                        <th width="100%"></th>
+                        <th>
+                            <label>Bölge</label>
+                        </th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody style="font-size:12px;">
+                <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Name)
+                                @Html.DisplayFor(modelItem => item.MovementName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CaloriValue)
+                                @Html.DisplayFor(modelItem => item.MovementPhoto)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ProteinValue)
+                                @Html.DisplayFor(modelItem => item.MovementDescription)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CarbohydrateValue)
+                                @Html.DisplayFor(modelItem => item.EnumMovementType)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.OilValue)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FiberValue)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FoodPhoto)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EnumFoodType)
-                            </td>
-                            <td>
-                               <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">Güncelle</a> |                             
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">Güncelle</a> |
                                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-sm">Detay</a> |
                                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -116,7 +89,6 @@
 </div>
 
 
-
 @section Siktipt{
 
     <!-- Bootstrap core JavaScript-->
@@ -137,10 +109,10 @@
     <script src="~/startbootstrap-sb-admin-2-gh-pages/js/demo/datatables-demo.js"></script>
 
     <script type="text/javascript">
-        
+
 
         $(document).ready(function () {
-            $('#besinTablosu').DataTable({
+            $('#hareketTablosu').DataTable({
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
                 }

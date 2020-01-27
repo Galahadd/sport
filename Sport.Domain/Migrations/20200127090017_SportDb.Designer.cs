@@ -9,7 +9,7 @@ using Sport.Domain;
 namespace Sport.Domain.Migrations
 {
     [DbContext(typeof(SportDatabaseContext))]
-    [Migration("20191209094903_SportDb")]
+    [Migration("20200127090017_SportDb")]
     partial class SportDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -171,7 +171,7 @@ namespace Sport.Domain.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("FKAreaId")
+                    b.Property<int>("EnumMovementType")
                         .HasColumnType("int");
 
                     b.Property<string>("MovementDescription")
@@ -184,8 +184,6 @@ namespace Sport.Domain.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FKAreaId");
 
                     b.ToTable("Movements");
                 });
@@ -394,15 +392,6 @@ namespace Sport.Domain.Migrations
                         .WithMany("UserSportLists")
                         .HasForeignKey("FKUserId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Sport.Domain.Entities.Movement", b =>
-                {
-                    b.HasOne("Sport.Domain.Entities.Area", "Area")
-                        .WithMany()
-                        .HasForeignKey("FKAreaId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

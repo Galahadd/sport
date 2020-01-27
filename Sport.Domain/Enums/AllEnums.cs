@@ -31,7 +31,13 @@ namespace Sport.Domain.Enums
             [Display(Name = "Çerez")]
             Nuts = 5,
             [Display(Name = "Sıvı")]
-            Liquid = 6
+            Liquid = 6,
+            [Display(Name = "Ekmek Ve Tahıl Grubu")]
+            BreadAndCerealGroup = 7,
+            [Display(Name = "Süt Grubu")]
+            MilkGroup = 8,
+            [Display(Name = "Yağ Grubu")]
+            LifGroup = 9
         }
         public enum EnumNutritionType
         {
@@ -40,7 +46,9 @@ namespace Sport.Domain.Enums
             [Display(Name = "Beyaz Et")]
             RedMeat = 1,
             [Display(Name = "Vejeteryan")]
-            Vegetarian = 2
+            Vegetarian = 2,
+            [Display(Name = "Süt Grubu")]
+            MilkGroup = 3
         }
         public enum EnumNutritionKind
         {
@@ -83,6 +91,27 @@ namespace Sport.Domain.Enums
             Snacks2 = 3,
             [Display(Name = "Akşam")]
             Evening = 4
+        }
+
+        public enum EnumMovementType
+        {
+            [Display(Name = "Göğüs")]
+            Breast = 0,
+            [Display(Name = "Sırt")]
+            Back = 1,
+            [Display(Name = "Omuz")]
+            Shoulder = 2,
+            [Display(Name = "Ön Kol")]
+            Biceps = 3,
+            [Display(Name = "Arka Kol")]
+            Triceps = 4,
+            [Display(Name = "Bacak")]
+            Leg = 5,
+            [Display(Name = "Kardiyo")]
+            Cardio = 6,
+            [Display(Name = "Karın")]
+            Abdomen = 7
+
         }
     }
 }

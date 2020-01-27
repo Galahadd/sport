@@ -11,9 +11,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sport.Domain;
 using Sport.Repository.Abstract;
+using Sport.Repository.Abstract.MMinterfaces;
 using Sport.Repository.Concrete.EntityFrameworkCore;
+using Sport.Repository.Concrete.EntityFrameworkCore.MMclass;
 using Sport.Service.Abstract;
+using Sport.Service.Abstract.MMRelation;
 using Sport.Service.Concrete.EntityFrameworkCore;
+using Sport.Service.Concrete.EntityFrameworkCore.MMclass;
 
 namespace Sport.WebUI
 {
@@ -38,6 +42,30 @@ namespace Sport.WebUI
             services.AddDbContext<SportDatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IFoodRepository, EfFoodRepository>();
             services.AddTransient<IFoodService, EfFoodService>();
+            services.AddScoped<INutritionListRepository, EfNutritionListRepository>();
+            services.AddTransient<INutritionListService, EfNutritionListService>();
+            services.AddScoped<IAreaRepository, EfAreaRepository>();
+            services.AddTransient<IAreaService, EfAreaService>();
+            services.AddScoped<IMovementRepository, EfMovementRepository>();
+            services.AddTransient<IMovementService, EfMovementService>();
+            services.AddScoped<INutritionDayRepository, EfNutritionDayRepository>();
+            services.AddTransient<INutritionDayService, EfNutritionDayService>();
+            services.AddScoped<ISportDayRepository, EfSportDayRepository>();
+            services.AddTransient<ISportDayService, EfSportDayService>();
+            services.AddScoped<ISportListRepository, EfSportListRepository>();
+            services.AddTransient<ISportListService, EfSportListService>();
+            services.AddScoped<IThatDayRepository, EfThatDayRepository>();
+            services.AddTransient<IThatDayService, EfThatDayService>();
+            services.AddScoped<IUserRepository, EfUserRepository>();
+            services.AddTransient<IUserService, EfUserService>();
+            services.AddScoped<IAreaMovementsRepository, EfAreaMovementsRepository>();
+            services.AddTransient<IAreaMovementsService, EfAreaMovementsService>();
+            services.AddScoped<IMealFoodsRepository, EfMealFoodsRepository>();
+            services.AddTransient<IMealFoodsService, EfMealFoodsService>();
+            services.AddScoped<IUserNutritionListsRepository, EfUserNutritionListsRepository>();
+            services.AddTransient<IUserNutritionListsService, EfUserNutritionListsService>();
+            services.AddScoped<IUserSportListsRepository, EfUserSportListsRepository>();
+            services.AddTransient<IUserSportListsService, EfUserSportListsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

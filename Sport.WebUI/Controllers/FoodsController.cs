@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sport.Domain.Entities;
 using Sport.Service.Abstract;
+using Sport.WebUI.Models;
 using System;
 using System.Threading.Tasks;
 
@@ -9,10 +10,13 @@ namespace Sport.WebUI.Controllers
     public class FoodsController : Controller
     {
         private readonly IFoodService _foodService;
+        private readonly INutritionListService _nutritionListService;
 
-        public FoodsController(IFoodService foodService)
+        public FoodsController(IFoodService foodService,
+            INutritionListService nutritionListService)
         {
             _foodService = foodService;
+            _nutritionListService = nutritionListService;
         }
 
         public async Task<IActionResult> Index()
@@ -69,6 +73,28 @@ namespace Sport.WebUI.Controllers
             Food food = await _foodService.FoodById(Id);
             return View(food);
         }
+        public async Task<IActionResult> Index2()
+        {
+            return View(await _nutritionListService.GetAllNutritionListAsync());
+        }
+
+        public IActionResult Create2()
+        {
+            return View(new NutritionList());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create2(NutritionList nutritionList)
+        {
+            int success = await _nutritionListService.AddNutritionListAsync(nutritionList);
+
+            if (success < 0)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("Index2");
+        }
+
 
 
         #region AllClosed
