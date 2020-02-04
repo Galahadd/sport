@@ -1,0 +1,30 @@
+﻿@model Sport.WebUI.ViewModels.SelectMovementAndAreaViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@section Classlar{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="~/webb/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/webb/css/style.css" rel="stylesheet" />
+    <link href="~/chosen.min.css" rel="stylesheet" />
+}
+
+@*<input type="text" id="area" value="@Model.areaId" hidden="hidden" />*@
+<input type="text" id="area" value="@Model.areaId" hidden="hidden" />
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.HiddenFor(model => model.areaId)
+        <label>Hareketleri Seçiniz</label>
+        <div class="form-group">
+            @Html.ListBoxFor(model => model.selectedMovementIdArray, new MultiSelectList(Model.allMovements, "Id", "Name"), new { id = "multiSelectDropDown", multiple = "multiple" })
+            <button id="sendSelectedMovements" class="btn btn-primary"> Kaydet</button>
+        </div>
+    </div>
+}
+

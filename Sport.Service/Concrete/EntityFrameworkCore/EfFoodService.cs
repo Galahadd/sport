@@ -41,9 +41,11 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
             return getFood;
         }
 
-        public async Task<IEnumerable<Food>> GetAllFoodAsync()
+        public async Task<List<Food>> GetAllFoodAsync()
         {
-            return await _foodRepo.GetAll();
+            IEnumerable<Food> list = await _foodRepo.GetAll();
+            List<Food> foods = list.ToList();
+            return foods;
         }
 
     }

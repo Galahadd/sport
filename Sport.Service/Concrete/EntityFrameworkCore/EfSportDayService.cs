@@ -3,6 +3,7 @@ using Sport.Repository.Abstract;
 using Sport.Service.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,15 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
         public async Task<IEnumerable<SportDay>> GetAllSportDayAsync()
         {
             return await _sportDayRepo.GetAll();
+        }
+
+        public async Task<List<SportDay>> GetSportDaysBySportListId(int sportListId)
+        {
+            IEnumerable<SportDay> daysForSportList = await _sportDayRepo.GetAll();
+
+            List<SportDay> returnDays = daysForSportList.Where(x => x.FKSportListId == sportListId).ToList();
+
+            return returnDays;
         }
     }
 }

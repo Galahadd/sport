@@ -16,5 +16,8 @@ namespace Sport.Service.Abstract
         Task<int> DeleteSportListAsync(SportList sportList);
 
         Task<SportList> SportListById(int Id);
+
+        Task<int> AddAreaMovements(string[] stringMovementIdList, int areaId);
+
     }
 }

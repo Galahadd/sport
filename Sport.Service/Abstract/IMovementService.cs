@@ -8,7 +8,7 @@ namespace Sport.Service.Abstract
 {
     public interface IMovementService
     {
-        Task<IEnumerable<Movement>> GetAllMovementAsync();
+        Task<List<Movement>> GetAllMovementAsync();
         Task<int> AddMovementAsync(Movement movement);
 
         Task<int> EditMovementAsync(Movement movement);

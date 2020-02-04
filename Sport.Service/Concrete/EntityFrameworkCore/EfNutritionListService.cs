@@ -82,15 +82,15 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
             return await _nutritionListRepo.GetAll();
         }
 
-        public async Task<int> AddThatFoods(List<Food> thatFoods, int thatId)
+        public async Task<int> AddThatFoods(string[] stringFoodIdList, int thatId)
         {
             MealFoods newMealFood = null;
             int success = 0;
 
-            foreach (var thatFood in thatFoods)
+            foreach (var thatFood in stringFoodIdList)
             { 
                 newMealFood = new MealFoods();
-                newMealFood.FKFoodId = thatFood.Id;
+                newMealFood.FKFoodId = Convert.ToInt32(thatFood);
                 newMealFood.FKThatDayId = thatId;
 
                  await _mealFoodsRepository.Add(newMealFood);

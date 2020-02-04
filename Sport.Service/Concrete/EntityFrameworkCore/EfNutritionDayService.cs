@@ -3,12 +3,13 @@ using Sport.Repository.Abstract;
 using Sport.Service.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sport.Service.Concrete.EntityFrameworkCore
 {
-    public class EfNutritionDayService:INutritionDayService
+    public class EfNutritionDayService : INutritionDayService
     {
         private readonly INutritionDayRepository _nutritionDayRepo;
         public EfNutritionDayService(INutritionDayRepository nutritionDayRepo)
@@ -42,5 +43,16 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
         {
             return await _nutritionDayRepo.GetAll();
         }
+
+        public async Task<List<NutritionDay>> GetNutritionDaysByNutritionListId(int nutritionListId)
+        {
+            IEnumerable<NutritionDay> daysForNutritionList = await _nutritionDayRepo.GetAll();
+
+            List<NutritionDay> returnDays = daysForNutritionList.Where(x => x.FKNutritionListId == nutritionListId).ToList();
+
+            return returnDays;
+        }
+
+   
     }
 }

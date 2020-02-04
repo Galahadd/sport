@@ -1,0 +1,79 @@
+﻿@model Sport.WebUI.ViewModels.SelectFoodsAndThatViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@section Classlar{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="~/webb/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/webb/css/style.css" rel="stylesheet" />
+    <link href="~/chosen.min.css" rel="stylesheet" />
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.HiddenFor(model => model.thatId)
+        <label>Besinleri Seçiniz</label>
+        <div class="form-group">
+            @Html.ListBoxFor(model => model.selectedFoodIdArray, new MultiSelectList(Model.allFoods, "Id", "Name"), new { id = "multiSelectDropDown", multiple = "multiple" })
+            <button id="sendSelectedFoods" class="btn btn-primary"> Kaydet</button>
+        </div>
+    </div>
+}
+
+
+
+
+
+@*@section Siktipt{
+        <script type="text/javascript">
+            $("#sendSelectedFoods").on("click", function () {
+                var thatId = $("#that").val();
+                console.log("selected that -> " + thatId);
+                $.ajax({
+                    url: '/NutritionList/Foods/' + thatId,
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data) {
+                    }
+                });
+    @*// function displayVals() {
+                        //     var multipleValues = $("#multipleDropdown").val() || [];
+                        //     console.log(multipleValues);
+                        //     return multipleValues;
+                        // }
+                        ////$("#multipleDropdown").change(displayVals);
+                        //$("#sendSelectedFoods").on("click", function () {
+                        //    var foodss = displayVals();
+                        //    console.log("selected foods -> " + foodss);
+                        //    var thatId = $("#that").val();
+                        //    console.log("selected that -> " + thatId);
+                        //    var jsonString = {
+                        //        "selectedFoods": foodss,
+                        //        "thatId": thatId
+                        //        };
+
+                        //    $.ajax({
+                        //        type: "POST",
+                        //        contentType: "application/json; charset=utf-8",
+                        //        url: '/NutritionList/GetSelectedFoods/' + foodss + thatId,
+                        //        dataType: "json",
+                        //        data: "{data:" + JSON.stringify(jsonString) + "}",
+                        //        success: function (data) {
+                        //            //var res = $.parseJSON(data);
+                        //            //$("#myform").html("<h3>
+        Json data: <h3>
+            " + res.fname + ", " + res.lastname)
+            //        },
+            //        error: function (xhr, err) {
+            //            alert("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
+            //            alert("responseText: " + xhr.responseText);
+            //        }
+            //    })
+            //});*@

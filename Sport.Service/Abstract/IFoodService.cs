@@ -11,7 +11,7 @@ namespace Sport.Service.Abstract
 {
     public interface IFoodService
     {
-        Task<IEnumerable<Food>> GetAllFoodAsync();
+        Task<List<Food>> GetAllFoodAsync();
         Task<int> AddFoodAsync(Food food);
 
         Task<int> EditFoodAsync(Food food);

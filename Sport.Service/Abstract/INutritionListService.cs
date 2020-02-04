@@ -17,6 +17,6 @@ namespace Sport.Service.Abstract
 
         Task<NutritionList> NutritionListById(int Id);
 
-        Task<int> AddThatFoods(List<Food> thatFoods, int thatId);
+        Task<int> AddThatFoods(string[] stringFoodIdList, int thatId);
     }
 }

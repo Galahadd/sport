@@ -16,5 +16,7 @@ namespace Sport.Service.Abstract
         Task<int> DeleteAreaAsync(Area area);
 
         Task<Area> AreaById(int Id);
+
+        Task<List<Area>> GetAreasBySportDayId(int sportDayId);
     }
 }

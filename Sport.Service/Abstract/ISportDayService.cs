@@ -17,5 +17,7 @@ namespace Sport.Service.Abstract
         Task<int> DeleteSportDayAsync(SportDay sportDay);
 
         Task<SportDay> SportDayById(int Id);
+
+        Task<List<SportDay>> GetSportDaysBySportListId(int sportListId);
     }
 }

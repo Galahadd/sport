@@ -21,6 +21,8 @@ namespace Sport.Domain.Entities
         public string FoodPhoto { get; set; }
         public EnumFoodType EnumFoodType { get; set; }
 
+
         public virtual ICollection<MealFoods> MealsIncluded { get; set; }
+
     }
 }

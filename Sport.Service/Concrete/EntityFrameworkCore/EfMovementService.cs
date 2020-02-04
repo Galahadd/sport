@@ -3,6 +3,7 @@ using Sport.Repository.Abstract;
 using Sport.Service.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,9 +39,11 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
             return getMovement;
         }
 
-        public async Task<IEnumerable<Movement>> GetAllMovementAsync()
+        public async Task<List<Movement>> GetAllMovementAsync()
         {
-            return await _movementRepo.GetAll();
+            IEnumerable<Movement> list = await _movementRepo.GetAll();
+            List<Movement> movements = list.ToList();
+            return movements;
         }
     }
 }
