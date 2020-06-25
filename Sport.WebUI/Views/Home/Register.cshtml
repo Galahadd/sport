@@ -1,4 +1,4 @@
-﻿
+﻿@model Sport.WebUI.Models.Security.RegisterViewModel
 @{
     Layout = null;
 }
@@ -28,30 +28,31 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Hesap Oluştur!</h1>
                             </div>
-                            <form class="user">
+                            <form asp-controller="Security" asp-action="Register" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="İsminiz">
+                                        <input type="text" asp-for="UserName" class="form-control form-control-user" id="exampleFirstName" placeholder="Kullanıcı Adınız">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Soyisminiz">
+                                        <input type="text" asp-for="Age" class="form-control form-control-user" id="exampleLastName" placeholder="Yaşınız">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Addresiniz">
+                                    <input type="email" asp-for="Email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Addresiniz">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Şifre">
+                                        <input type="password" asp-for="Password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Şifre">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Şifre Tekrar">
+                                        <input type="password" asp-for="ConfirmedPassword" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Şifre Tekrar">
                                     </div>
                                 </div>
-                                <a class="btn btn-primary btn-user btn-block" asp-area="" asp-controller="Home" asp-action="Login">Kayıt Ol</a>
-                                @*<a href="login.html" class="btn btn-primary btn-user btn-block">
-                                        Kayıt Ol
-                                    </a>*@
+                                <input type="submit" value="Kayıt Ol" class="btn btn-primary btn-user btn-block" />
+                                @*<a class="btn btn-primary btn-user btn-block" asp-area="" asp-controller="Home" asp-action="Login">Kayıt Ol</a>
+                                    <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                            Kayıt Ol
+                                        </a>*@
                                 <hr>
                             </form>
                             <hr>

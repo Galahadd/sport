@@ -77,206 +77,206 @@ namespace Sport.WebUI.Models
             {
                 viewInfo.WeeklyCalories = Math.Ceiling(viewInfo.Sedentary * 7);
                 viewInfo.Selection = Math.Ceiling(viewInfo.Sedentary);
+                int sum = 100;
+                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.Selection * 30 / 100);
+                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.Sedentary * 35 / 100);
+                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.Sedentary * 35 / 100);
 
-                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.Sedentary / 30);
-                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.Sedentary / 35);
-                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.Sedentary / 35);
+                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.Sedentary * 40 / 100);
+                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.Sedentary * 40 / 100);
+                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.Sedentary * 20 / 100);
 
-                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.Sedentary / 40);
-                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.Sedentary / 40);
-                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.Sedentary / 20);
-
-                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.Sedentary / 30);
-                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.Sedentary / 20);
-                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.Sedentary / 50);
+                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.Sedentary * 30 / 100);
+                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.Sedentary * 20 / 100);
+                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.Sedentary * 50 / 100);
                 double cutting = (viewInfo.Sedentary - 500);
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 35);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 35);
+                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting * 35 / 100);
+                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting * 35 / 100);
 
-                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting / 40);
-                viewInfo.cuttingLowerFats = Math.Ceiling(cutting / 40);
-                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting / 20);
+                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.cuttingLowerFats = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting * 20 / 100);
 
-                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.bulkingLowerFats = Math.Ceiling(cutting / 20);
-                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting / 50);
+                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.bulkingLowerFats = Math.Ceiling(cutting * 20 / 100);
+                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting * 50 / 100);
                 double bulking = (viewInfo.Sedentary + 500);
-                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking / 35);
-                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking / 35);
+                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking * 35 / 100);
+                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking * 35 / 100);
 
-                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherFats = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking / 20);
+                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherFats = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking * 20 / 100);
 
-                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.bulkingHigherFats = Math.Ceiling(bulking / 20);
-                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking / 50);
+                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.bulkingHigherFats = Math.Ceiling(bulking * 20 / 100);
+                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking * 50 / 100);
             }
             else if (calorieCalculator.CalorieCalculatorActivity == CalorieCalculatorActivity.LightExercise)
             {
                 viewInfo.WeeklyCalories = Math.Ceiling(viewInfo.LightExercise * 7);
                 viewInfo.Selection = Math.Ceiling(viewInfo.LightExercise);
 
-                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.LightExercise / 30);
-                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.LightExercise / 35);
-                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.LightExercise / 35);
+                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.LightExercise * 30 / 100);
+                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.LightExercise * 35 / 100);
+                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.LightExercise * 35 / 100);
 
-                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.LightExercise / 40);
-                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.LightExercise / 40);
-                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.LightExercise / 20);
+                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.LightExercise * 40 / 100);
+                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.LightExercise * 40 / 100);
+                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.LightExercise * 20 / 100);
 
-                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.LightExercise / 30);
-                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.LightExercise / 20);
-                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.LightExercise / 50);
+                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.LightExercise * 30 / 100);
+                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.LightExercise * 20 / 100);
+                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.LightExercise * 50 / 100);
                 double cutting = (viewInfo.LightExercise - 500);
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 35);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 35);
+                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting * 35 / 100);
+                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting * 35 / 100);
 
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 40);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 40);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 20);
+                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting * 20 / 100);
 
-                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.bulkingLowerFats = Math.Ceiling(cutting / 20);
-                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting / 50);
+                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.bulkingLowerFats = Math.Ceiling(cutting * 20 / 100);
+                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting * 50 / 100);
                 double bulking = (viewInfo.LightExercise + 500);
-                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking / 35);
-                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking / 35);
+                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking * 35 / 100);
+                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking * 35 / 100);
 
-                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherFats = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking / 20);
+                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherFats = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking * 20 / 100);
 
-                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.bulkingHigherFats = Math.Ceiling(bulking / 20);
-                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking / 50);
+                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.bulkingHigherFats = Math.Ceiling(bulking * 20 / 100);
+                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking * 50 / 100);
             }
             else if (calorieCalculator.CalorieCalculatorActivity == CalorieCalculatorActivity.ModerateExercise)
             {
                 viewInfo.WeeklyCalories = Math.Ceiling(viewInfo.ModerateExercise * 7);
                 viewInfo.Selection = Math.Ceiling(viewInfo.ModerateExercise);
 
-                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.ModerateExercise / 30);
-                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.ModerateExercise / 35);
-                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.ModerateExercise / 35);
+                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.ModerateExercise * 30 / 100);
+                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.ModerateExercise * 35 / 100);
+                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.ModerateExercise * 35 / 100);
 
-                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.ModerateExercise / 40);
-                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.ModerateExercise / 40);
-                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.ModerateExercise / 20);
+                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.ModerateExercise * 40 / 100);
+                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.ModerateExercise * 40 / 100);
+                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.ModerateExercise * 20 / 100);
 
-                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.ModerateExercise / 30);
-                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.ModerateExercise / 20);
-                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.ModerateExercise / 50);
+                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.ModerateExercise * 30 / 100);
+                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.ModerateExercise * 20 / 100);
+                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.ModerateExercise * 50 / 100);
                 double cutting = (viewInfo.ModerateExercise - 500);
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 35);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 35);
+                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting * 35 / 100);
+                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting * 35 / 100);
 
-                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting / 40);
-                viewInfo.cuttingLowerFats = Math.Ceiling(cutting / 40);
-                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting / 20);
+                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.cuttingLowerFats = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting * 20 / 100);
 
-                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.bulkingLowerFats = Math.Ceiling(cutting / 20);
-                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting / 50);
+                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.bulkingLowerFats = Math.Ceiling(cutting * 20 / 100);
+                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting * 50 / 100);
                 double bulking = (viewInfo.ModerateExercise + 500);
-                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking / 35);
-                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking / 35);
+                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking * 35 / 100);
+                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking * 35 / 100);
 
-                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherFats = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking / 20);
+                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherFats = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking * 20 / 100);
 
-                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.bulkingHigherFats = Math.Ceiling(bulking / 20);
-                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking / 50);
+                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.bulkingHigherFats = Math.Ceiling(bulking * 20 / 100);
+                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking * 50 / 100);
             }
             else if (calorieCalculator.CalorieCalculatorActivity == CalorieCalculatorActivity.HeavyExercise)
             {
                 viewInfo.WeeklyCalories = Math.Ceiling(viewInfo.HeavyExercise * 7);
                 viewInfo.Selection = Math.Ceiling(viewInfo.HeavyExercise);
 
-                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.HeavyExercise / 30);
-                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.HeavyExercise / 35);
-                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.HeavyExercise / 35);
+                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.HeavyExercise * 30 / 100);
+                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.HeavyExercise * 35 / 100);
+                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.HeavyExercise * 35 / 100);
 
-                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.HeavyExercise / 40);
-                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.HeavyExercise / 40);
-                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.HeavyExercise / 20);
+                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.HeavyExercise * 40 / 100);
+                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.HeavyExercise * 40 / 100);
+                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.HeavyExercise * 20 / 100);
 
-                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.HeavyExercise / 30);
-                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.HeavyExercise / 20);
-                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.HeavyExercise / 50);
+                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.HeavyExercise * 30 / 100);
+                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.HeavyExercise * 20 / 100);
+                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.HeavyExercise * 50 / 100);
                 double cutting = (viewInfo.HeavyExercise - 500);
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 35);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 35);
+                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting * 35 / 100);
+                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting * 35 / 100);
 
-                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting / 40);
-                viewInfo.cuttingLowerFats = Math.Ceiling(cutting / 40);
-                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting / 20);
+                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.cuttingLowerFats = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting * 20 / 100);
 
-                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.bulkingLowerFats = Math.Ceiling(cutting / 20);
-                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting / 50);
+                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.bulkingLowerFats = Math.Ceiling(cutting * 20 / 100);
+                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting * 50 / 100);
                 double bulking = (viewInfo.HeavyExercise + 500);
-                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking / 35);
-                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking / 35);
+                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking * 35 / 100);
+                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking * 35 / 100);
 
-                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherFats = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking / 20);
+                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherFats = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking * 20 / 100);
 
-                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.bulkingHigherFats = Math.Ceiling(bulking / 20);
-                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking / 50);
+                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.bulkingHigherFats = Math.Ceiling(bulking * 20 / 100);
+                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking * 50 / 100);
             }
             else if (calorieCalculator.CalorieCalculatorActivity == CalorieCalculatorActivity.Athlete)
             {
                 viewInfo.WeeklyCalories = Math.Ceiling(viewInfo.Athlete * 7);
                 viewInfo.Selection = Math.Ceiling(viewInfo.Athlete);
 
-                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.Athlete / 30);
-                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.Athlete / 35);
-                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.Athlete / 35);
+                viewInfo.maintenanceModerateCarbs = Math.Ceiling(viewInfo.Athlete * 30 / 100);
+                viewInfo.maintenanceModerateFats = Math.Ceiling(viewInfo.Athlete * 35 / 100);
+                viewInfo.maintenanceModerateProtein = Math.Ceiling(viewInfo.Athlete * 35 / 100);
 
-                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.Athlete / 40);
-                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.Athlete / 40);
-                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.Athlete / 20);
+                viewInfo.cuttingModerateCarbs = Math.Ceiling(viewInfo.Athlete * 40 / 100);
+                viewInfo.cuttingModerateFats = Math.Ceiling(viewInfo.Athlete * 40 / 100);
+                viewInfo.cuttingModerateProtein = Math.Ceiling(viewInfo.Athlete * 20 / 100);
 
-                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.Athlete / 30);
-                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.Athlete / 20);
-                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.Athlete / 50);
+                viewInfo.bulkingModerateCarbs = Math.Ceiling(viewInfo.Athlete * 30 / 100);
+                viewInfo.bulkingModerateFats = Math.Ceiling(viewInfo.Athlete * 20 / 100);
+                viewInfo.bulkingModerateProtein = Math.Ceiling(viewInfo.Athlete * 50 / 100);
                 double cutting = (viewInfo.Athlete - 500);
-                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting / 35);
-                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting / 35);
+                viewInfo.maintenanceLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.maintenanceLowerFats = Math.Ceiling(cutting * 35 / 100);
+                viewInfo.maintenanceLowerProtein = Math.Ceiling(cutting * 35 / 100);
 
-                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting / 40);
-                viewInfo.cuttingLowerFats = Math.Ceiling(cutting / 40);
-                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting / 20);
+                viewInfo.cuttingLowerCarbs = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.cuttingLowerFats = Math.Ceiling(cutting * 40 / 100);
+                viewInfo.cuttingLowerProtein = Math.Ceiling(cutting * 20 / 100);
 
-                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting / 30);
-                viewInfo.bulkingLowerFats = Math.Ceiling(cutting / 20);
-                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting / 50);
+                viewInfo.bulkingLowerCarbs = Math.Ceiling(cutting * 30 / 100);
+                viewInfo.bulkingLowerFats = Math.Ceiling(cutting * 20 / 100);
+                viewInfo.bulkingLowerProtein = Math.Ceiling(cutting * 50 / 100);
                 double bulking = (viewInfo.Athlete + 500);
-                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking / 35);
-                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking / 35);
+                viewInfo.maintenanceHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.maintenanceHigherFats = Math.Ceiling(bulking * 35 / 100);
+                viewInfo.maintenanceHigherProtein = Math.Ceiling(bulking * 35 / 100);
 
-                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherFats = Math.Ceiling(bulking / 40);
-                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking / 20);
+                viewInfo.cuttingHigherCarbs = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherFats = Math.Ceiling(bulking * 40 / 100);
+                viewInfo.cuttingHigherProtein = Math.Ceiling(bulking * 20 / 100);
 
-                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking / 30);
-                viewInfo.bulkingHigherFats = Math.Ceiling(bulking / 20);
-                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking / 50);
+                viewInfo.bulkingHigherCarbs = Math.Ceiling(bulking * 30 / 100);
+                viewInfo.bulkingHigherFats = Math.Ceiling(bulking * 20 / 100);
+                viewInfo.bulkingHigherProtein = Math.Ceiling(bulking * 50 / 100);
             }
             return viewInfo;
         }

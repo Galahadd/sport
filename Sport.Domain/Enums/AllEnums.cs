@@ -79,6 +79,7 @@ namespace Sport.Domain.Enums
             [Display(Name = "Atlet")]
             Athlete = 4
         }
+       
         public enum EnumMealType
         {
             [Display(Name = "Sabah")]

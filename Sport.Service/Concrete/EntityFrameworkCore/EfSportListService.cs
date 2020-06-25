@@ -1,10 +1,13 @@
-﻿using Sport.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Sport.Domain;
+using Sport.Domain.Entities;
 using Sport.Domain.Entities.MMRelation;
 using Sport.Repository.Abstract;
 using Sport.Repository.Abstract.MMinterfaces;
 using Sport.Service.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,15 +19,18 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
         private readonly ISportDayRepository _sportDayRepository;
         private readonly IAreaRepository _areaRepository;
         private readonly IAreaMovementsRepository _areaMovementsRepository;
+        private readonly SportDatabaseContext _context;
         public EfSportListService(ISportListRepository sportListRepo,
             ISportDayRepository sportDayRepository,
             IAreaRepository areaRepository,
-            IAreaMovementsRepository areaMovementsRepository)
+            IAreaMovementsRepository areaMovementsRepository,
+            SportDatabaseContext context)
         {
             _sportListRepo = sportListRepo;
             _sportDayRepository = sportDayRepository;
             _areaRepository = areaRepository;
             _areaMovementsRepository = areaMovementsRepository;
+            _context = context;
         }
 
         public async Task<int> AddSportListAsync(SportList sportList)
@@ -38,16 +44,47 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
             for (int i = 1; i <= 7; i++)
             {
                 sDay = new SportDay();
-                sDay.Name = "Day " + i;
+                sDay.Name = i + ".Gün";
                 sDay.FKSportListId = savedNutritionList.Id;
                 sDay = await _sportDayRepository.AddEntityAndGetId(sDay);
 
                 for (int j = 1; j <= 8; j++)
                 {
                     aDay = new Area();
-                    aDay.Name = "Area " + j;
-                    aDay.FKDayId = sDay.Id;
+                    if (j == 1)
+                    {
+                        aDay.Name = "Göğüs";
+                    }
+                    else if (j == 2)
+                    {
+                        aDay.Name = "Sırt";
+                    }
+                    else if (j == 3)
+                    {
+                        aDay.Name = "Omuz";
+                    }
+                    else if (j == 4)
+                    {
+                        aDay.Name = "Ön Kol";
+                    }
+                    else if (j == 5)
+                    {
+                        aDay.Name = "Arka Kol";
+                    }
+                    else if (j == 6)
+                    {
+                        aDay.Name = "Bacak";
+                    }
+                    else if (j == 7)
+                    {
+                        aDay.Name = "Kardiyo";
+                    }
+                    else
+                    {
+                        aDay.Name = "Karın";
+                    }
 
+                    aDay.FKDayId = sDay.Id;
                     success = await _areaRepository.Add(aDay);
                 }
             }
@@ -81,7 +118,7 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
 
         public async Task<int> AddAreaMovements(string[] stringMovementIdList, int areaId)
         {
-            AreaMovements newAreaMovement= null;
+            AreaMovements newAreaMovement = null;
             int success = 0;
 
             foreach (var thatMovement in stringMovementIdList)
@@ -99,7 +136,14 @@ namespace Sport.Service.Concrete.EntityFrameworkCore
                 return 1;
             }
             return 0;
-
         }
+
+        public async Task<IEnumerable<AreaMovements>> SportListDetailsView(int sportListId)
+        {
+            List<AreaMovements> areaMovements = _context.AreaMovements.Include(x => x.Area).Include(x => x.Movement).Include(x=>x.Area.SportDay).Where(x => x.Area.SportDay.SportList.Id == sportListId).ToList();  
+
+            return areaMovements;
+        }
+
     }
 }

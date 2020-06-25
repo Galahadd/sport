@@ -1,23 +1,10 @@
 ﻿
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"] - Sport.WebUI</title>
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
+    @RenderSection("Js", required: false)
     @RenderSection("Classlar", required: false)
     <link href="~/webb/css/bootstrap.css" rel="stylesheet" />
     <link href="~/webb/css/style.css" rel="stylesheet" />
@@ -47,12 +34,80 @@
                         <ul class="menu">
                             <li><a asp-controller="Home" asp-action="Calculator">Anasayfa</a></li>
                             <li><a asp-action="Calculator" asp-controller="Home">Kalori Hesapla</a></li>
-                            <li><a asp-action="Index" asp-controller="Foods">Besinler</a></li>
-                            <li><a asp-action="Index" asp-controller="Movements">Hareketler</a></li>
-                            <li><a asp-action="GetAllNutritionList" asp-controller="NutritionList">Beslenme Listesi</a></li>
-                            <li><a asp-action="GetAllSportList" asp-controller="SportList">Spor Listesi</a></li>
-                            <li><a asp-action="Login" asp-controller="Home">Giriş Yap</a></li>
-                            <li><a asp-action="Register" asp-controller="Home">Kayıt Ol</a></li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li><a asp-action="AddRoles" asp-controller="Roles">Rol Ekle</a></li>
+                            }
+
+                            @if (User.IsInRole("User") || User.IsInRole("Admin"))
+                            {
+                                <li>
+                                    <!-- First Tier Drop Down -->
+                                    <label for="drop-2" class="toggle">Besinler <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+                                    <a>Besinler <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                    <input type="checkbox" id="drop-2" />
+                                    <ul class="inner-dropdown">
+
+                                        <li><a asp-action="Index" asp-controller="Foods">Kayıtlı Besinler</a></li>
+
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <li><a asp-action="GetAllNutritionList" asp-controller="NutritionList">Beslenme Listeleri</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                            @if (User.IsInRole("User") || User.IsInRole("Admin"))
+                            {
+                                <li>
+                                    <!-- First Tier Drop Down -->
+                                    <label for="drop-2" class="toggle">Haraketler <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+                                    <a>Haraketler <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                    <input type="checkbox" id="drop-2" />
+                                    <ul class="inner-dropdown">
+
+                                        <li><a asp-action="Index" asp-controller="Movements">Kayıtlı Hareketler</a></li>
+
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <li><a asp-action="GetAllSportList" asp-controller="SportList">Spor Listeleri</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                            @if (User.IsInRole("User") || User.IsInRole("Admin"))
+                            {
+                            }
+                            else
+                            {
+                                <li><a asp-action="Login" asp-controller="Security">Giriş Yap</a></li>
+                                <li><a asp-action="Register" asp-controller="Security">Kayıt Ol</a></li>
+                            }
+                            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <li>
+                                    <!-- First Tier Drop Down -->
+                                    <label for="drop-2" class="toggle">@User?.Identity?.Name  <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+                                    <a>@User?.Identity?.Name <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                    <input type="checkbox" id="drop-2" />
+                                    <ul class="inner-dropdown">
+
+                                        <li><a asp-action="Profile" asp-controller="Profile">Profil</a></li>
+                                        <li><a asp-action="ProfileSetting" asp-controller="Profile">Profilimi Düzenle</a></li>
+                                        <li><a asp-action="Questions" asp-controller="NutritionList">Diyet Listesi Oluştur</a></li>
+                                        <li><a asp-action="QuestionsSport" asp-controller="SportList">Spor Programı Oluştur</a></li>
+                                        <li><a asp-action="UserNutritionListDetails" asp-controller="UserNutritionList">Beslenme Listemi Görüntüle</a></li>
+                                        <li><a asp-action="UserSportListDetails" asp-controller="UserSportList">Spor Listemi Görüntüle</a></li>
+                                        <li><a asp-action="ResetPassword" asp-controller="Security">Şifremi Yenile</a></li>
+                                        <li><a asp-action="Logout" asp-controller="Security">Çıkış Yap</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+
+                            }
+
                         </ul>
                     </nav>
                 </div>
@@ -62,12 +117,11 @@
     </header>
     <!-- //header -->
     <!-- banner -->
-    <div class="main-w3pvt mian-content-wthree text-center" id="home">
-        <div class="container">
+    @RenderSection("NormalLayout", required: false)
 
-            @RenderSection("NormalLayout", required: false)
-        </div>
-    </div>
+
+
+
     <!-- //banner -->
     <!-- banner bottom -->
     <section class="w3ls-bnrbtm py-5" id="about">
@@ -83,7 +137,7 @@
                 <!-- copyright -->
                 <p class="col-lg-8 copy-right-grids text-wh text-lg-left text-center mt-lg-2">
                     © 2019
-                    <a href="https://w3layouts.com/" target="_blank">FitOl</a>
+                    <a href="#" target="_blank">FitOl</a>
                 </p>
                 <!-- //copyright -->
                 <!-- social icons -->
@@ -98,6 +152,7 @@
     </a>
     <!-- //move top icon -->
     @RenderSection("Siktipt", required: false)
+
 </body>
 
 </html>

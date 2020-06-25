@@ -17,5 +17,10 @@ namespace Sport.Service.Abstract.MMRelation
         Task<int> DeleteUserSportListsAsync(UserSportLists userSportLists);
 
         Task<UserSportLists> UserSportListsById(int Id);
+        Task<UserSportLists> UserSportList(string userId);
+        Task<List<UserSportLists>> UserSportLists(string userId);
+        Task<int> AddUserSportListsAsync(string userId, int sportListId);
+        Task<bool> UserSportListIsThere(string userId, int sportListId);
+
     }
 }

@@ -11,8 +11,6 @@ namespace Sport.WebUI.ViewModels
     {
         public List<Food> allFoods { get; set; }
         public int thatId { get; set; }
-
-        //public int Id { get; set; }
         public string[] selectedFoodIdArray { get; set; }
     }
 }

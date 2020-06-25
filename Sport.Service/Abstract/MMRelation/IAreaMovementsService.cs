@@ -16,5 +16,6 @@ namespace Sport.Service.Abstract.MMRelation
         Task<int> DeleteAreaMovementsAsync(AreaMovements areaMovements);
 
         Task<AreaMovements> AreaMovementsById(int Id);
+
     }
 }

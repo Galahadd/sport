@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Sport.Domain.Entities;
 using Sport.Service.Abstract;
 using Sport.WebUI.Models;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sport.WebUI.Controllers
 {
+    [Authorize()]
     public class FoodsController : Controller
     {
         private readonly IFoodService _foodService;
@@ -23,7 +25,7 @@ namespace Sport.WebUI.Controllers
         {
             return View(await _foodService.GetAllFoodAsync());
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View(new Food());

@@ -35,7 +35,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasIndex("FKDayId");
 
-                    b.ToTable("Areas");
+                    b.ToTable("Sport.Domain.Entities.Area");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.Food", b =>
@@ -71,7 +71,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Foods");
+                    b.ToTable("Sport.Domain.Entities.Food");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.MMRelation.AreaMovements", b =>
@@ -93,7 +93,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasIndex("FKMovementId");
 
-                    b.ToTable("AreaMovements");
+                    b.ToTable("Sport.Domain.Entities.MMRelation.AreaMovements");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.MMRelation.MealFoods", b =>
@@ -115,7 +115,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasIndex("FKThatDayId");
 
-                    b.ToTable("MealFoods");
+                    b.ToTable("Sport.Domain.Entities.MMRelation.MealFoods");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.MMRelation.UserNutritionLists", b =>
@@ -128,16 +128,14 @@ namespace Sport.Domain.Migrations
                     b.Property<int>("FKNutritionListId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FKUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserSecret")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FKNutritionListId");
 
-                    b.HasIndex("FKUserId");
-
-                    b.ToTable("UserNutritionLists");
+                    b.ToTable("Sport.Domain.Entities.MMRelation.UserNutritionLists");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.MMRelation.UserSportLists", b =>
@@ -150,16 +148,14 @@ namespace Sport.Domain.Migrations
                     b.Property<int>("FKSportListId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FKUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserSecret")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FKSportListId");
 
-                    b.HasIndex("FKUserId");
-
-                    b.ToTable("UserSportLists");
+                    b.ToTable("Sport.Domain.Entities.MMRelation.UserSportLists");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.Movement", b =>
@@ -183,7 +179,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movements");
+                    b.ToTable("Sport.Domain.Entities.Movement");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.NutritionDay", b =>
@@ -203,7 +199,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasIndex("FKNutritionListId");
 
-                    b.ToTable("NutritionDays");
+                    b.ToTable("Sport.Domain.Entities.NutritionDay");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.NutritionList", b =>
@@ -227,7 +223,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("NutritionLists");
+                    b.ToTable("Sport.Domain.Entities.NutritionList");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.SportDay", b =>
@@ -247,7 +243,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasIndex("FKSportListId");
 
-                    b.ToTable("SportDays");
+                    b.ToTable("Sport.Domain.Entities.SportDay");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.SportList", b =>
@@ -268,7 +264,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SportLists");
+                    b.ToTable("Sport.Domain.Entities.SportList");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.ThatDay", b =>
@@ -291,37 +287,7 @@ namespace Sport.Domain.Migrations
 
                     b.HasIndex("FKNutritionDayId");
 
-                    b.ToTable("ThatDays");
-                });
-
-            modelBuilder.Entity("Sport.Domain.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EnumGenderType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
+                    b.ToTable("Sport.Domain.Entities.ThatDay");
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.Area", b =>
@@ -370,12 +336,6 @@ namespace Sport.Domain.Migrations
                         .HasForeignKey("FKNutritionListId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("Sport.Domain.Entities.User", "User")
-                        .WithMany("NutritionLists")
-                        .HasForeignKey("FKUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Sport.Domain.Entities.MMRelation.UserSportLists", b =>
@@ -383,12 +343,6 @@ namespace Sport.Domain.Migrations
                     b.HasOne("Sport.Domain.Entities.SportList", "SportList")
                         .WithMany("UserSportLists")
                         .HasForeignKey("FKSportListId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Sport.Domain.Entities.User", "User")
-                        .WithMany("UserSportLists")
-                        .HasForeignKey("FKUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

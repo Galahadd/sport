@@ -21,7 +21,6 @@ namespace Sport.Domain
         public virtual DbSet<SportDay> SportDays { get; set; }
         public virtual DbSet<SportList> SportLists { get; set; }
         public virtual DbSet<ThatDay> ThatDays { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<AreaMovements> AreaMovements { get; set; }
         public virtual DbSet<MealFoods> MealFoods { get; set; }
         public virtual DbSet<UserSportLists> UserSportLists { get; set; }
@@ -30,6 +29,11 @@ namespace Sport.Domain
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+                modelBuilder.Entity(entity.Name).ToTable(entity.Name);
+            }
             modelBuilder.Entity<AreaMovements>().HasKey(sc => sc.Id);
 
             modelBuilder.Entity<AreaMovements>()
@@ -48,11 +52,11 @@ namespace Sport.Domain
 
             modelBuilder.Entity<UserNutritionLists>().HasKey(sc => sc.Id);
 
-            modelBuilder.Entity<UserNutritionLists>()
-                .HasOne(y => y.User)
-                .WithMany(x => x.NutritionLists)
-                .HasForeignKey(pc => pc.FKUserId)
-                .IsRequired().OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<UserNutritionLists>()
+            //    .HasOne(y => y.User)
+            //    .WithMany(x => x.NutritionLists)
+            //    .HasForeignKey(pc => pc.FKUserId)
+            //    .IsRequired().OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<UserNutritionLists>()
              .HasOne(y => y.NutritionList)
@@ -64,11 +68,11 @@ namespace Sport.Domain
 
             modelBuilder.Entity<UserSportLists>().HasKey(sc => sc.Id);
 
-            modelBuilder.Entity<UserSportLists>()
-                .HasOne(y => y.User)
-                .WithMany(x => x.UserSportLists)
-                .HasForeignKey(pc => pc.FKUserId)
-                .IsRequired().OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<UserSportLists>()
+            //    .HasOne(y => y.User)
+            //    .WithMany(x => x.UserSportLists)
+            //    .HasForeignKey(pc => pc.FKUserId)
+            //    .IsRequired().OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<UserSportLists>()
              .HasOne(y => y.SportList)

@@ -1,4 +1,5 @@
 ﻿using Sport.Domain.Entities;
+using Sport.Domain.Entities.MMRelation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,5 +20,6 @@ namespace Sport.Service.Abstract
 
         Task<int> AddAreaMovements(string[] stringMovementIdList, int areaId);
 
+        Task<IEnumerable<AreaMovements>> SportListDetailsView(int sportListId);
     }
 }

@@ -12,15 +12,18 @@
     <link href="~/startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css" rel="stylesheet" />
     <link href="~/startbootstrap-sb-admin-2-gh-pages/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="~/startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="~/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> }
+    <link href="~/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
 
 
 
 <h4>Kayıtlı Besinleriniz</h4>
-
-<p>
-    <a asp-controller="Foods" asp-action="Create">Besin Ekle</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-controller="Foods" asp-action="Create">Besin Ekle</a>
+    </p>
+}
 <div class="card shadow mb-4">
     <div class="card-header py-3" style="background-color:darkgrey">
         <h6 class="m-0 font-weight-bold text-primary" style="color:coral">Besin Listesi</h6>
@@ -86,27 +89,35 @@
                                 @Html.DisplayFor(modelItem => item.EnumFoodType)
                             </td>
                             <td>
-                               <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">Güncelle</a> |                             
-                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-sm">Detay</a> |
-                                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Silmek İstiyor musunuz ?</h5>
-                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">Silmek istediğinizden emin misiniz?</div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Kapat</button>
-                                                <a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">Güncelle</a> 
+                                    
+                                }
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-sm">Detay</a> 
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Silmek İstiyor musunuz ?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">Silmek istediğinizden emin misiniz?</div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Kapat</button>
+                                                    <a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#logoutModal">Sil</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#logoutModal">Sil</button>
+                                }
                             </td>
+
                         </tr>
                     }
                 </tbody>
@@ -137,7 +148,7 @@
     <script src="~/startbootstrap-sb-admin-2-gh-pages/js/demo/datatables-demo.js"></script>
 
     <script type="text/javascript">
-        
+
 
         $(document).ready(function () {
             $('#besinTablosu').DataTable({

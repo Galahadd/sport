@@ -17,5 +17,12 @@ namespace Sport.Service.Abstract.MMRelation
         Task<int> DeleteUserNutritionListsAsync(UserNutritionLists userNutritionLists);
 
         Task<UserNutritionLists> UserNutritionListsById(int Id);
+
+        Task<List<UserNutritionLists>> UserNutritionLists(string userId);
+
+        Task<UserNutritionLists> UserNutritionList(string userId);
+
+        Task<int> AddUserNutritionListsAsync(string userId, int nutritionListId);
+        Task<bool> UserNutritionListIsThere(string userId, int nutritionListId);
     }
 }

@@ -10,7 +10,6 @@ namespace Sport.WebUI.ViewModels
     {
         public List<Movement> allMovements { get; set; }
         public int areaId { get; set; }
-
         public string[] selectedMovementIdArray { get; set; }
     }
 }

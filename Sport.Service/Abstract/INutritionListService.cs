@@ -1,4 +1,5 @@
 ﻿using Sport.Domain.Entities;
+using Sport.Domain.Entities.MMRelation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,5 +19,7 @@ namespace Sport.Service.Abstract
         Task<NutritionList> NutritionListById(int Id);
 
         Task<int> AddThatFoods(string[] stringFoodIdList, int thatId);
+
+        Task<IEnumerable<MealFoods>> NutritionListDetailsView(int nutritionListId);
     }
 }

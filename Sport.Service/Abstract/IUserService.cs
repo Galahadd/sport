@@ -1,4 +1,6 @@
-﻿using Sport.Domain.Entities;
+﻿using Microsoft.AspNetCore.Identity;
+using Sport.Domain;
+using Sport.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,16 +8,22 @@ using System.Threading.Tasks;
 
 namespace Sport.Service.Abstract
 {
-   public interface IUserService
+    public interface IUserService
     {
 
-        Task<IEnumerable<User>> GetAllUserAsync();
-        Task<int> AddUserAsync(User user);
+        Task<IEnumerable<AppUser>> GetAllUserAsync();
+        Task<int> AddUserAsync(AppUser user);
 
-        Task<int> EditUserAsync(User user);
+        Task<int> EditUserAsync(AppUser user);
 
-        Task<int> DeleteUserAsync(User user);
+        Task<int> DeleteUserAsync(AppUser user);
 
-        Task<User> UserById(int Id);
+        Task<AppUser> UserByName(string username);
+        Task<string> GetUserByName(string id);
+
+        Task<string> GetUserByRolName(string id);
+
+        Task<IEnumerable<IdentityUserRole<string>>> GetAllUserRole();
+
     }
 }

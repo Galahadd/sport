@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sport.Domain.Entities;
@@ -69,13 +70,17 @@ namespace Sport.WebUI.Controllers
             return View(x);
         }
 
-        public ActionResult Login()
+        public IActionResult FatRate()
         {
             return View();
         }
-        public ActionResult Register()
+
+        [HttpPost]
+        public JsonResult FatRatePost(CalculateFatRate jsonData)
         {
-            return View();
+            FatRate fatRate = new FatRate();
+            double result = fatRate.FateRate(jsonData);
+            return Json(result);
         }
     }
 }

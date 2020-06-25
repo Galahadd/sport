@@ -1,6 +1,7 @@
 ﻿using Sport.Domain.Entities.MMRelation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Sport.Domain.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public int FKNutritionDayId{ get; set; }
-
+        [DisplayName("Hangi Öğün")]
         public EnumMealType EnumMealType { get; set; }
 
         [ForeignKey("FKNutritionDayId")]

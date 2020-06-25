@@ -2,12 +2,12 @@
 
 namespace Sport.Domain.Migrations
 {
-    public partial class SportDb : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Foods",
+                name: "Sport.Domain.Entities.Food",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -23,11 +23,11 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Foods", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.Food", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movements",
+                name: "Sport.Domain.Entities.Movement",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -39,11 +39,11 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movements", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.Movement", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "NutritionLists",
+                name: "Sport.Domain.Entities.NutritionList",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -55,11 +55,11 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NutritionLists", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.NutritionList", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SportLists",
+                name: "Sport.Domain.Entities.SportList",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -70,29 +70,31 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SportLists", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.SportList", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "Sport.Domain.Entities.MMRelation.UserNutritionLists",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Surname = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Password2 = table.Column<string>(nullable: true),
-                    EnumGenderType = table.Column<int>(nullable: false)
+                    UserSecret = table.Column<string>(nullable: true),
+                    FKNutritionListId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.MMRelation.UserNutritionLists", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sport.Domain.Entities.MMRelation.UserNutritionLists_Sport.Domain.Entities.NutritionList_FKNutritionListId",
+                        column: x => x.FKNutritionListId,
+                        principalTable: "Sport.Domain.Entities.NutritionList",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "NutritionDays",
+                name: "Sport.Domain.Entities.NutritionDay",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -102,17 +104,37 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NutritionDays", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.NutritionDay", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_NutritionDays_NutritionLists_FKNutritionListId",
+                        name: "FK_Sport.Domain.Entities.NutritionDay_Sport.Domain.Entities.NutritionList_FKNutritionListId",
                         column: x => x.FKNutritionListId,
-                        principalTable: "NutritionLists",
+                        principalTable: "Sport.Domain.Entities.NutritionList",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SportDays",
+                name: "Sport.Domain.Entities.MMRelation.UserSportLists",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserSecret = table.Column<string>(nullable: true),
+                    FKSportListId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sport.Domain.Entities.MMRelation.UserSportLists", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sport.Domain.Entities.MMRelation.UserSportLists_Sport.Domain.Entities.SportList_FKSportListId",
+                        column: x => x.FKSportListId,
+                        principalTable: "Sport.Domain.Entities.SportList",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sport.Domain.Entities.SportDay",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -122,69 +144,17 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SportDays", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.SportDay", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SportDays_SportLists_FKSportListId",
+                        name: "FK_Sport.Domain.Entities.SportDay_Sport.Domain.Entities.SportList_FKSportListId",
                         column: x => x.FKSportListId,
-                        principalTable: "SportLists",
+                        principalTable: "Sport.Domain.Entities.SportList",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserNutritionLists",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FKUserId = table.Column<int>(nullable: false),
-                    FKNutritionListId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserNutritionLists", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserNutritionLists_NutritionLists_FKNutritionListId",
-                        column: x => x.FKNutritionListId,
-                        principalTable: "NutritionLists",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_UserNutritionLists_Users_FKUserId",
-                        column: x => x.FKUserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserSportLists",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FKUserId = table.Column<int>(nullable: false),
-                    FKSportListId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserSportLists", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserSportLists_SportLists_FKSportListId",
-                        column: x => x.FKSportListId,
-                        principalTable: "SportLists",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_UserSportLists_Users_FKUserId",
-                        column: x => x.FKUserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ThatDays",
+                name: "Sport.Domain.Entities.ThatDay",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -195,17 +165,17 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ThatDays", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.ThatDay", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ThatDays_NutritionDays_FKNutritionDayId",
+                        name: "FK_Sport.Domain.Entities.ThatDay_Sport.Domain.Entities.NutritionDay_FKNutritionDayId",
                         column: x => x.FKNutritionDayId,
-                        principalTable: "NutritionDays",
+                        principalTable: "Sport.Domain.Entities.NutritionDay",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Areas",
+                name: "Sport.Domain.Entities.Area",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -215,17 +185,17 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Areas", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.Area", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Areas_SportDays_FKDayId",
+                        name: "FK_Sport.Domain.Entities.Area_Sport.Domain.Entities.SportDay_FKDayId",
                         column: x => x.FKDayId,
-                        principalTable: "SportDays",
+                        principalTable: "Sport.Domain.Entities.SportDay",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MealFoods",
+                name: "Sport.Domain.Entities.MMRelation.MealFoods",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -235,23 +205,23 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MealFoods", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.MMRelation.MealFoods", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MealFoods_Foods_FKFoodId",
+                        name: "FK_Sport.Domain.Entities.MMRelation.MealFoods_Sport.Domain.Entities.Food_FKFoodId",
                         column: x => x.FKFoodId,
-                        principalTable: "Foods",
+                        principalTable: "Sport.Domain.Entities.Food",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_MealFoods_ThatDays_FKThatDayId",
+                        name: "FK_Sport.Domain.Entities.MMRelation.MealFoods_Sport.Domain.Entities.ThatDay_FKThatDayId",
                         column: x => x.FKThatDayId,
-                        principalTable: "ThatDays",
+                        principalTable: "Sport.Domain.Entities.ThatDay",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AreaMovements",
+                name: "Sport.Domain.Entities.MMRelation.AreaMovements",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -261,122 +231,109 @@ namespace Sport.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AreaMovements", x => x.Id);
+                    table.PrimaryKey("PK_Sport.Domain.Entities.MMRelation.AreaMovements", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AreaMovements_Areas_FKAreaId",
+                        name: "FK_Sport.Domain.Entities.MMRelation.AreaMovements_Sport.Domain.Entities.Area_FKAreaId",
                         column: x => x.FKAreaId,
-                        principalTable: "Areas",
+                        principalTable: "Sport.Domain.Entities.Area",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_AreaMovements_Movements_FKMovementId",
+                        name: "FK_Sport.Domain.Entities.MMRelation.AreaMovements_Sport.Domain.Entities.Movement_FKMovementId",
                         column: x => x.FKMovementId,
-                        principalTable: "Movements",
+                        principalTable: "Sport.Domain.Entities.Movement",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AreaMovements_FKAreaId",
-                table: "AreaMovements",
-                column: "FKAreaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AreaMovements_FKMovementId",
-                table: "AreaMovements",
-                column: "FKMovementId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Areas_FKDayId",
-                table: "Areas",
+                name: "IX_Sport.Domain.Entities.Area_FKDayId",
+                table: "Sport.Domain.Entities.Area",
                 column: "FKDayId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MealFoods_FKFoodId",
-                table: "MealFoods",
+                name: "IX_Sport.Domain.Entities.MMRelation.AreaMovements_FKAreaId",
+                table: "Sport.Domain.Entities.MMRelation.AreaMovements",
+                column: "FKAreaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sport.Domain.Entities.MMRelation.AreaMovements_FKMovementId",
+                table: "Sport.Domain.Entities.MMRelation.AreaMovements",
+                column: "FKMovementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sport.Domain.Entities.MMRelation.MealFoods_FKFoodId",
+                table: "Sport.Domain.Entities.MMRelation.MealFoods",
                 column: "FKFoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MealFoods_FKThatDayId",
-                table: "MealFoods",
+                name: "IX_Sport.Domain.Entities.MMRelation.MealFoods_FKThatDayId",
+                table: "Sport.Domain.Entities.MMRelation.MealFoods",
                 column: "FKThatDayId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_NutritionDays_FKNutritionListId",
-                table: "NutritionDays",
+                name: "IX_Sport.Domain.Entities.MMRelation.UserNutritionLists_FKNutritionListId",
+                table: "Sport.Domain.Entities.MMRelation.UserNutritionLists",
                 column: "FKNutritionListId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SportDays_FKSportListId",
-                table: "SportDays",
+                name: "IX_Sport.Domain.Entities.MMRelation.UserSportLists_FKSportListId",
+                table: "Sport.Domain.Entities.MMRelation.UserSportLists",
                 column: "FKSportListId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ThatDays_FKNutritionDayId",
-                table: "ThatDays",
+                name: "IX_Sport.Domain.Entities.NutritionDay_FKNutritionListId",
+                table: "Sport.Domain.Entities.NutritionDay",
+                column: "FKNutritionListId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sport.Domain.Entities.SportDay_FKSportListId",
+                table: "Sport.Domain.Entities.SportDay",
+                column: "FKSportListId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sport.Domain.Entities.ThatDay_FKNutritionDayId",
+                table: "Sport.Domain.Entities.ThatDay",
                 column: "FKNutritionDayId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserNutritionLists_FKNutritionListId",
-                table: "UserNutritionLists",
-                column: "FKNutritionListId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserNutritionLists_FKUserId",
-                table: "UserNutritionLists",
-                column: "FKUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserSportLists_FKSportListId",
-                table: "UserSportLists",
-                column: "FKSportListId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserSportLists_FKUserId",
-                table: "UserSportLists",
-                column: "FKUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AreaMovements");
+                name: "Sport.Domain.Entities.MMRelation.AreaMovements");
 
             migrationBuilder.DropTable(
-                name: "MealFoods");
+                name: "Sport.Domain.Entities.MMRelation.MealFoods");
 
             migrationBuilder.DropTable(
-                name: "UserNutritionLists");
+                name: "Sport.Domain.Entities.MMRelation.UserNutritionLists");
 
             migrationBuilder.DropTable(
-                name: "UserSportLists");
+                name: "Sport.Domain.Entities.MMRelation.UserSportLists");
 
             migrationBuilder.DropTable(
-                name: "Areas");
+                name: "Sport.Domain.Entities.Area");
 
             migrationBuilder.DropTable(
-                name: "Movements");
+                name: "Sport.Domain.Entities.Movement");
 
             migrationBuilder.DropTable(
-                name: "Foods");
+                name: "Sport.Domain.Entities.Food");
 
             migrationBuilder.DropTable(
-                name: "ThatDays");
+                name: "Sport.Domain.Entities.ThatDay");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Sport.Domain.Entities.SportDay");
 
             migrationBuilder.DropTable(
-                name: "SportDays");
+                name: "Sport.Domain.Entities.NutritionDay");
 
             migrationBuilder.DropTable(
-                name: "NutritionDays");
+                name: "Sport.Domain.Entities.SportList");
 
             migrationBuilder.DropTable(
-                name: "SportLists");
-
-            migrationBuilder.DropTable(
-                name: "NutritionLists");
+                name: "Sport.Domain.Entities.NutritionList");
         }
     }
 }

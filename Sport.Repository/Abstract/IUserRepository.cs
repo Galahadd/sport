@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sport.Repository.Abstract
 {
-    public interface IUserRepository:IGenericRepository<User>
+    public interface IUserRepository:IGenericRepository<AppUser>
     {
     }
 }

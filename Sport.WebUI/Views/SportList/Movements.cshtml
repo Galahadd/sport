@@ -13,18 +13,50 @@
     <link href="~/chosen.min.css" rel="stylesheet" />
 }
 
-@*<input type="text" id="area" value="@Model.areaId" hidden="hidden" />*@
-<input type="text" id="area" value="@Model.areaId" hidden="hidden" />
+<input type="text" id="that" value="@Model.areaId" hidden="hidden" />
 
-@using (Html.BeginForm())
-{
-    <div>
-        @Html.HiddenFor(model => model.areaId)
-        <label>Hareketleri Seçiniz</label>
-        <div class="form-group">
-            @Html.ListBoxFor(model => model.selectedMovementIdArray, new MultiSelectList(Model.allMovements, "Id", "Name"), new { id = "multiSelectDropDown", multiple = "multiple" })
-            <button id="sendSelectedMovements" class="btn btn-primary"> Kaydet</button>
-        </div>
-    </div>
+<select id="multipleDropdown" multiple="multiple">
+    @foreach (var item in Model.allMovements)
+    {
+        <option value="@item.Id">@item.MovementName</option>
+    }
+</select>
+<hr />
+
+
+<button id="sendSelectedMovements" class="btn btn-primary"> Listeye Hareket Ekle</button>
+
+
+@section Siktipt{
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script type="text/javascript">
+        function displayVals() {
+            var multipleValues = $("#multipleDropdown").val() || [];
+            console.log(multipleValues);
+            return multipleValues;
+        }
+        $(document).on('click', '#sendSelectedMovements', function (e) {
+            var movements = displayVals();
+            console.log("selected movements -> " + movements);
+            var areaId = $("#that").val();
+            console.log("selected area -> " + areaId);
+            var jsonData = {
+                "selectedMovementIdArray": movements,
+                "areaId": areaId
+            };
+
+            var url = "/SportList/MovementsPost";
+
+            $.post(url, { jsonData }, function (data) {
+                if (data.status == 1) {
+                    location.href = data.redirect;
+                }
+
+            }, "json");
+        });
+    </script>
 }
-

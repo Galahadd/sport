@@ -10,11 +10,11 @@ namespace Sport.Domain.Entities.MMRelation
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int FKUserId { get; set; }
+        public string UserSecret { get; set; }
         public int FKNutritionListId { get; set; }
 
-        [ForeignKey("FKUserId")]
-        public virtual User User { get; set; }
+        //[ForeignKey("FKUserId")]
+        //public virtual AppUser User { get; set; }
         [ForeignKey("FKNutritionListId")]
         public virtual NutritionList NutritionList { get; set; }
     }

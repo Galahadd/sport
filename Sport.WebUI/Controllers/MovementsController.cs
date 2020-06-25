@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sport.Domain.Entities;
 using Sport.Service.Abstract;
 
 namespace Sport.WebUI.Controllers
 {
+    [Authorize()]
     public class MovementsController : Controller
     {
         private readonly IMovementService _movementService;
@@ -19,7 +21,7 @@ namespace Sport.WebUI.Controllers
         {
             return View(await _movementService.GetAllMovementAsync());
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View(new Movement());

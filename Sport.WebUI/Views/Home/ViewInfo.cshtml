@@ -3,7 +3,18 @@
     Layout = "~/Views/Shared/_Layout1.cshtml";
     ViewData["Title"] = "Bilgileriniz";
 }
+@*@section js{
+        <script>
+            addEventListener("load", function () {
+                setTimeout(hideURLbar, 0);
+            }, false);
 
+            function hideURLbar() {
+                window.scrollTo(500, 501);
+            }
+        </script>
+
+    }*@
 @section Classlar{
 
     <link rel="canonical" href="https://tdeecalculator.net/result.php?s=metric&g=male&age=23&kg=78.9&cm=170&act=1.55&bf=19&f=1">
@@ -71,7 +82,7 @@
 
                         <tr>
                             <td><big>Hareketsiz</big></td>
-                            <td><big>Günlük @Model.Sedentary kalori</></big></td>
+                            <td><big>Günlük @Model.Sedentary kalori</big></td>
                         </tr>
                         <tr>
                             <td><big>Hafif Egzersiz</big></td>
@@ -145,13 +156,13 @@
                         <tr>
                             @{ if (Model.BMI < 18.5)
                                 {
-                                    <td><b><big>18.5 veya aşağısı</big></b></td>
-                                    <td><b><big>Zayıf</big></b></td>
+                                    <td><b><big><strong>18.5 veya aşağısı</strong></big></b></td>
+                                    <td><b><big><strong>Zayıf</strong></big></b></td>
                                 }
                                 else
                                 {
-                                    <td><big>18.5 veya aşağısı</big></td>
-                                    <td><big>Zayıf</big></td>
+                                    <td><big><strong>18.5 veya aşağısı</strong></big></td>
+                                    <td><big><strong>Zayıf</strong></big></td>
 
                                 }
                             }
@@ -159,8 +170,8 @@
                         <tr>
                             @{ if (Model.BMI > 18.5 && Model.BMI < 25)
                                 {
-                                    <td><b><big>18-25 Arası</big></b></td>
-                                    <td><b><big>Normal</big></b></td>
+                                    <td><b><big><strong>18-25 Arası</strong></big></b></td>
+                                    <td><b><big><strong>Normal</strong></big></b></td>
                                 }
                                 else
                                 {
@@ -174,8 +185,8 @@
                         <tr>
                             @{ if (Model.BMI > 25 && Model.BMI < 29.99)
                                 {
-                                    <td><b><big>25-29.99 Arası</big></b></td>
-                                    <td><b><big>Kilolu</big></b></td>
+                                    <td><b><big><strong>25-29.99 Arası</strong></big></b></td>
+                                    <td><b><big><strong>Kilolu</strong></big></b></td>
                                 }
                                 else
                                 {
@@ -188,8 +199,8 @@
                         <tr>
                             @{ if (Model.BMI > 30)
                                 {
-                                    <td><b><big>30+</big></b></td>
-                                    <td><b><big>Şişman</big></b></td>
+                                    <td><b><big><strong>30+</strong></big></b></td>
+                                    <td><b><big><strong>Şişman</strong></big></b></td>
                                 }
                                 else
                                 {
@@ -457,9 +468,7 @@
         <p class="mt10 text-center"><small>Protein ve karbonhidratın 1 gramında 4 kalori,1 gr yağda ise 9 kalori vardır.</small></p>
 
         <!--Link vermeyi unutma-->
-        <p><strong>Nasıl başlayacağından emin değilmisin?</strong> <a target="_blank" href="" rel="nofollow" class="clicky_log_outbound">Detaylı beslenme ve spor programları için üye ol.</a> 💪</p>
-
-
+        <p><strong>Nasıl başlayacağından emin değilmisin?</strong> <a target="_blank" asp-action="Register" asp-controller="Security" rel="nofollow" class="clicky_log_outbound">Detaylı beslenme ve spor programları için üye ol.</a> 💪</p>
 
         @section Siktipt{
 

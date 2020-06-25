@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Sport.Repository.Concrete.EntityFrameworkCore
 {
-    public class EfUserRepository:EfGenericRepository<User>,IUserRepository
+    public class EfUserRepository : EfGenericRepository<AppUser>, IUserRepository
     {
         public EfUserRepository(SportDatabaseContext context) : base(context)
         {
